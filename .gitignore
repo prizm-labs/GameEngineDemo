@@ -5,7 +5,7 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 
-
+/Assets/_Scenes/testScene.unity
 
 
 
@@ -21,6 +21,7 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
+*.meta
 
 
 # Unity3D generated meta files
