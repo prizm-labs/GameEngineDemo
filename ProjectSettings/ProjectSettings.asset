@@ -432,7 +432,7 @@ PlayerSettings:
   - XboxOne::enus
   XboxOne::enus: 1
   stringPropertyNames: []
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: 658f77bd-9f89-4107-a3c8-cf948d45231b
+  projectName: GameEngineDemo
+  organizationId: jonah-4040323
   cloudEnabled: 0
