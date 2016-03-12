@@ -94,7 +94,7 @@ public class PanelManager : MonoBehaviour {
 		EventSystem.current.SetSelectedGameObject(go);
 
 		var standaloneInputModule = EventSystem.current.currentInputModule as StandaloneInputModule;
-		if (standaloneInputModule != null && standaloneInputModule.inputMode == StandaloneInputModule.InputMode.Buttons)
+		if (standaloneInputModule != null)// && standaloneInputModule.inputmo == StandaloneInputModule.InputMode.Buttons)	//JOHN- got rid of this as was giving warning
 			return;
 
 		EventSystem.current.SetSelectedGameObject(null);
