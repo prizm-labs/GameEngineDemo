@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
+
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 	public bool dragOnSurfaces = true;
@@ -23,15 +23,15 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		m_DraggingIcon.transform.SetParent (canvas.transform, false);
 		m_DraggingIcon.transform.SetAsLastSibling();
 		
-		var image = m_DraggingIcon.AddComponent<Image>();
+		var image = m_DraggingIcon.AddComponent<RawImage>();
 		// The icon will be under the cursor.
 		// We want it to be ignored by the event system.
 		CanvasGroup group = m_DraggingIcon.AddComponent<CanvasGroup>();
 		group.blocksRaycasts = false;
 
-		image.sprite = GetComponent<Image>().sprite;
+		image.texture = GetComponent<RawImage>().texture;
 		image.SetNativeSize();
-		
+
 		if (dragOnSurfaces)
 			m_DraggingPlane = transform as RectTransform;
 		else
@@ -64,6 +64,10 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	{
 		if (m_DraggingIcon != null)
 			Destroy(m_DraggingIcon);
+
+
+
+
 	}
 
 	static public T FindInParents<T>(GameObject go) where T : Component
