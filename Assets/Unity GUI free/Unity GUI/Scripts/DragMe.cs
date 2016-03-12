@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+	public GameObject cube;
 	public bool dragOnSurfaces = true;
 	
 	private GameObject m_DraggingIcon;
@@ -64,6 +65,20 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	{
 		if (m_DraggingIcon != null)
 			Destroy(m_DraggingIcon);
+
+		Vector3 location = Camera.main.ScreenToWorldPoint(new Vector3 (eventData.position.x, eventData.position.y, Camera.main.nearClipPlane));
+
+		Instantiate (cube, location, Quaternion.identity);
+		/*
+		Ray ray = Camera.main.ScreenPointToRay (location);
+		RaycastHit hit; 
+
+		if (Physics.Raycast (ray, out hit, 100)) {
+			string tagOfObject = hit.transform.tag;
+			Debug.LogError (tagOfObject);
+		}
+*/
+
 
 
 
