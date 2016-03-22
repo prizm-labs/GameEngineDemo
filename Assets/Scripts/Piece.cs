@@ -152,7 +152,7 @@ public class Piece : MonoBehaviour {
 		Debug.Log ("now going to try to load audio");
 
 
-		myAudioClips = new List<AudioClip>(Resources.LoadAll (myCategory + "/" + myType.ToString () + "Sounds", typeof(AudioClip)).Cast<AudioClip>().ToArray());
+		myAudioClips = new List<AudioClip>(Resources.LoadAll (myCategory.ToString() + "/" + myCategory.ToString () + "Sounds", typeof(AudioClip)).Cast<AudioClip>().ToArray());
 		if (myAudioClips.Count == 0) {
 			Debug.LogError ("no sounds for: " + myCategory + "/" + myType.ToString ());
 		}
