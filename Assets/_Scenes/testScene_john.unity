@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonName: 4
-  typeToInstantiate: 15
+  typeToInstantiate: 5
   numberToInstantiate: 1
 --- !u!23 &27266739
 MeshRenderer:
@@ -270,7 +270,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 145454031}
   - 114: {fileID: 145454032}
-  - 114: {fileID: 145454033}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -301,20 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f90adbc390819458cb0b178b65c49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &145454033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 145454030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810dd5fbf04b77942bbc0a93cdff1fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
-  pausedGUI: {fileID: 0}
-  gameName: Your Game
 --- !u!1 &248661410
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonName: 3
-  typeToInstantiate: 3
+  typeToInstantiate: 4
   numberToInstantiate: 1
 --- !u!23 &248661416
 MeshRenderer:
@@ -683,7 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonName: 1
-  typeToInstantiate: 20
+  typeToInstantiate: 7
   numberToInstantiate: 1
 --- !u!23 &531958157
 MeshRenderer:
@@ -795,6 +780,7 @@ GameObject:
   - 92: {fileID: 766997747}
   - 124: {fileID: 766997746}
   - 81: {fileID: 766997745}
+  - 114: {fileID: 766997750}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -869,6 +855,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &766997750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766997744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810dd5fbf04b77942bbc0a93cdff1fdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paused: 0
+  pausedGUI: {fileID: 0}
+  gameName: Risk
 --- !u!1 &958171703
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonName: 3
-  typeToInstantiate: 10
+  typeToInstantiate: 9
   numberToInstantiate: 1
 --- !u!23 &958171709
 MeshRenderer:
