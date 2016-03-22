@@ -107,6 +107,7 @@ public class Piece : MonoBehaviour {
 			ThisPieceIsADice ();
 		}
 		bootstrapped = true;
+		Debug.Log ("_Bootstrap() completed!");
 	}
 	private IEnumerator LoadMesh() {
 		Debug.Log ("loading meshrenderer from resources folder");
@@ -143,8 +144,7 @@ public class Piece : MonoBehaviour {
 				}
 			}
 		}
-
-		Debug.Log ("_Bootstrap() Completed!");
+			
 		yield return null;
 	}
 
