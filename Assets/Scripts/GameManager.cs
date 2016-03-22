@@ -9,13 +9,13 @@ public class GameManager : MonoBehaviour {
 
 	[System.NonSerialized]
 	public static float DistanceFromCamera;
-	private float BoundariesHeight = 500.0f;
+	private float BoundariesHeight = 5000.0f;
 
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 
-		DistanceFromCamera = mainCamera.gameObject.transform.position.y - GameObject.Find ("Floor").transform.position.y;
+		DistanceFromCamera = (mainCamera.gameObject.transform.position.y - GameObject.Find ("Floor").transform.position.y) * 0.25f;
 		Debug.Log ("distance from camera is set at: " + DistanceFromCamera.ToString ());
 
 		CreateBoundariesDice ();
@@ -43,19 +43,19 @@ public class GameManager : MonoBehaviour {
 
 		GameObject bottomBound = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		bottomBound.transform.position = bottom;
-		bottomBound.transform.localScale = new Vector3 (width, BoundariesHeight, 1f);
+		bottomBound.transform.localScale = new Vector3 (width, BoundariesHeight, 5f);
 
 		GameObject topBound = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		topBound.transform.position = top;
-		topBound.transform.localScale = new Vector3 (width, BoundariesHeight, 1f);
+		topBound.transform.localScale = new Vector3 (width, BoundariesHeight, 5f);
 
 		GameObject leftBound = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		leftBound.transform.position = left;
-		leftBound.transform.localScale = new Vector3 (1f, BoundariesHeight, height);
+		leftBound.transform.localScale = new Vector3 (5f, BoundariesHeight, height);
 
 		GameObject rightBound = GameObject.CreatePrimitive(PrimitiveType.Cube);
 		rightBound.transform.position = right;
-		rightBound.transform.localScale = new Vector3 (1f, BoundariesHeight, height);
+		rightBound.transform.localScale = new Vector3 (5f, BoundariesHeight, height);
 
 		boundaries.Add (bottomBound);
 		boundaries.Add (topBound);
@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour {
 			bond.AddComponent<Rigidbody> ();
 			bond.GetComponent<Rigidbody> ().useGravity = false;
 			bond.GetComponent<Rigidbody> ().isKinematic = true;
+			bond.name = "diceBoundary";
 		}
 
 		bottomBound.layer = 8;	//Dice layer

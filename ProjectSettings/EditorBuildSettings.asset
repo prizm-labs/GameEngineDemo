@@ -6,6 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/_Scenes/DannyTestScene.unity
+=======
+    path: Assets/_Scenes/testScene_john.unity
+>>>>>>> 59c8f13c93c8d290364c4628327a2319ea32d86b
   - enabled: 0
-    path: Assets/TouchScript/Examples/RawInput/RawInput.unity
+    path: Assets/Plugins/TouchScript/Examples/RawInput/RawInput.unity
