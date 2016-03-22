@@ -28,3 +28,13 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+# Builtin shaders
+[Aa]ssets/Editor/
+[Aa]ssets/Editor.meta
+[Aa]ssets/DefaultResourcesExtra/
+[Aa]ssets/DefaultResourcesExtra.meta
+[Aa]ssets/DefaultResources/
+[Aa]ssets/DefaultResources.meta
+[Aa]ssets/CGIncludes/
+[Aa]ssets/CGIncludes.meta
