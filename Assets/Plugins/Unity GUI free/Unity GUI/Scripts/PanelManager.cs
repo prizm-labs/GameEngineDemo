@@ -15,6 +15,8 @@ public class PanelManager : MonoBehaviour {
 	const string k_OpenTransitionName = "Open";
 	const string k_ClosedStateName = "Closed";
 
+
+
 	public void OnEnable()
 	{
 		m_OpenParameterId = Animator.StringToHash (k_OpenTransitionName);
@@ -26,25 +28,25 @@ public class PanelManager : MonoBehaviour {
 	}
 
 	public void OpenPanel (Animator anim)
-	{
-		if (m_Open == anim)
-			return;
+	{		
+		if (m_Open == null) {
+			anim.gameObject.SetActive (true);
+			var newPreviouslySelected = EventSystem.current.currentSelectedGameObject;
 
-		anim.gameObject.SetActive(true);
-		var newPreviouslySelected = EventSystem.current.currentSelectedGameObject;
+			anim.transform.SetAsLastSibling ();
 
-		anim.transform.SetAsLastSibling();
+			//CloseCurrent ();
 
-		CloseCurrent();
+			m_PreviouslySelected = newPreviouslySelected;
 
-		m_PreviouslySelected = newPreviouslySelected;
+			m_Open = anim;
+			m_Open.SetBool (m_OpenParameterId, true);
 
-		m_Open = anim;
-		m_Open.SetBool(m_OpenParameterId, true);
+			GameObject go = FindFirstEnabledSelectable (anim.gameObject);
 
-		GameObject go = FindFirstEnabledSelectable(anim.gameObject);
-
-		SetSelected(go);
+			SetSelected (go);		
+		} else
+			CloseCurrent ();
 	}
 
 	static GameObject FindFirstEnabledSelectable (GameObject gameObject)
