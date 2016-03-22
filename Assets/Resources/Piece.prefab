@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11498114}
   - 33: {fileID: 3399934}
   - 82: {fileID: 8256986}
+  - 114: {fileID: 11471756}
   m_Layer: 0
   m_Name: Piece
   m_TagString: Untagged
@@ -76,7 +77,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &8256986
 AudioSource:
@@ -152,6 +153,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &11471756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: 8a873af8-587d-4aff-83e8-fbd6e8ff8c22
+  StoreAllComponents: 1
+  Components: []
 --- !u!114 &11474086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454599d59cf597b459ae2a34559fe76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAudioClips: []
 --- !u!114 &11498114
 MonoBehaviour:
   m_ObjectHideFlags: 1

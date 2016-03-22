@@ -2,42 +2,62 @@
 using System.Collections;
 using TouchScript;
 using TouchScript.Gestures;
-using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
 public class ApplyTransform : MonoBehaviour {
 	private GameObject m_DraggingIcon;
-	private RectTransform m_DraggingPlane;
+	//private RectTransform m_DraggingPlane;
 
 	TransformGesture myTransformGesture;
 	PressGesture myPressGesture;
-	ReleaseGesture myReleaseGesture;
+	//ReleaseGesture myReleaseGesture;
+
+	private Vector3 maxScaling = new Vector3();
+	private Vector3 minScaling = new Vector3();
 
 	public int activeTouches = 0;
 	void Awake() { 
+
 		myTransformGesture = GetComponent<TransformGesture> ();
 		myPressGesture = GetComponent<PressGesture> ();
-		myReleaseGesture = GetComponent<ReleaseGesture> ();
+		//myReleaseGesture = GetComponent<ReleaseGesture> ();
+		//Debug.Log ("my press gesture: " + myPressGesture.ToString ());
+
+		maxScaling = transform.localScale * 2.5f;
+		minScaling = transform.localScale * 0.75f;
 	}
 
 	void OnEnable() {
-		myTransformGesture.Transformed += MyTransformGesture_Transformed;
-		myPressGesture.Pressed += MyPressGesture_Pressed;
-		myReleaseGesture.Released += MyReleaseGesture_Released;
+		if (myTransformGesture != null)
+			myTransformGesture.Transformed += MyTransformGesture_Transformed;
+		//myPressGesture.Pressed += MyPressGesture_Pressed;
+		//myReleaseGesture.Released += MyReleaseGesture_Released;
 	}
 	
 	void OnDisable() {
-		myTransformGesture.Transformed -= MyTransformGesture_Transformed;
-		myPressGesture.Pressed -= MyPressGesture_Pressed;
-		myReleaseGesture.Released -= MyReleaseGesture_Released;
+		if (myTransformGesture != null)
+			myTransformGesture.Transformed -= MyTransformGesture_Transformed;
+		//myPressGesture.Pressed -= MyPressGesture_Pressed;
+		//myReleaseGesture.Released -= MyReleaseGesture_Released;
 	}
 
 	void MyTransformGesture_Transformed (object sender, System.EventArgs e)	{
-		//myTransformGesture.ApplyTransform (this.transform);
-		Debug.LogError (myTransformGesture.ScreenPosition);
-		Debug.LogError(Camera.main.ScreenToWorldPoint(new Vector3(myTransformGesture.ScreenPosition.x, myTransformGesture.ScreenPosition.y, Camera.main.farClipPlane)));
+
+		myTransformGesture.ApplyTransform (this.transform);
+
+		if (this.transform.localScale.sqrMagnitude > maxScaling.sqrMagnitude) {
+			Debug.Log ("we are too big");
+			this.transform.localScale = maxScaling;
+		}
+		if (this.transform.localScale.sqrMagnitude < minScaling.sqrMagnitude) {
+			Debug.Log ("we are too small");
+			this.transform.localScale = minScaling;
+		}
+
+		//Debug.LogError (myTransformGesture.ScreenPosition);
+		//Debug.LogError(Camera.main.ScreenToWorldPoint(new Vector3(myTransformGesture.ScreenPosition.x, myTransformGesture.ScreenPosition.y, Camera.main.farClipPlane)));
 		if (m_DraggingIcon != null)
 			SetDraggedPosition(myTransformGesture.ScreenPosition);
 	}
@@ -64,7 +84,7 @@ public class ApplyTransform : MonoBehaviour {
 		image.texture = GetComponent<RawImage>().texture;
 		image.SetNativeSize();
 
-		m_DraggingPlane = canvas.transform as RectTransform;
+		//m_DraggingPlane = canvas.transform as RectTransform;
 
 		SetDraggedPosition(myPressGesture.ActiveTouches[activeTouches].Position);	
 	}

@@ -15,7 +15,7 @@ public class DraggableInstantiator : MonoBehaviour {
 
 
 	void Start () {
-		gameObject.AddComponent<ApplyTransform> ();
+		//gameObject.AddComponent<ApplyTransform> ();
 	}
 
 	void OnEnable() {
@@ -32,12 +32,13 @@ public class DraggableInstantiator : MonoBehaviour {
 
 		for (int i = 0; i < numberToInstantiate; i++) {
 			GameObject newPiece = Instantiate (Resources.Load ("Piece", typeof(GameObject))) as GameObject;
-			newPiece.GetComponent<Piece> ().myType = typeToInstantiate;
 			newPiece.GetComponent<Piece> ().myCategory = buttonName;
+			newPiece.GetComponent<Piece> ().myType = typeToInstantiate;
 			newPiece.GetComponent<Piece> ().Bootstrap ();
+			newPiece.transform.position = transform.position;
 		}
 
-		Destroy (this);
+		Destroy (this.gameObject);
 	}
 
 }

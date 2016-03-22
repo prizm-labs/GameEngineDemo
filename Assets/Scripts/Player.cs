@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	//should also update the player's displayer
 	void UpdateMyDockCard() {
 		myNumSoldiers = CountMyOwnedPieces (TypeOfPiece.soldier);
-		myNumCalvalry = CountMyOwnedPieces (TypeOfPiece.calvalry);
+		myNumCalvalry = CountMyOwnedPieces (TypeOfPiece.cavalry);
 		myNumCannons = CountMyOwnedPieces (TypeOfPiece.cannon);
 	}
 
