@@ -49,7 +49,6 @@ GameObject:
   - 33: {fileID: 3321232}
   - 82: {fileID: 8221678}
   - 114: {fileID: 11445732}
-  - 114: {fileID: 11426202}
   m_Layer: 0
   m_Name: pyramid_piece
   m_TagString: Untagged
@@ -266,18 +265,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f67a956e6669b54db106f182bd21d83, type: 3}
   - {fileID: 8300000, guid: e0c65c5b08f214f49b1b94d4d75bf9e7, type: 3}
   - {fileID: 8300000, guid: 749279366c9543c4f9b31f3725b0920b, type: 3}
---- !u!114 &11426202
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cddc5b1ed478404dab7ea3d70dc1c79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeTouches: 0
 --- !u!114 &11445732
 MonoBehaviour:
   m_ObjectHideFlags: 1

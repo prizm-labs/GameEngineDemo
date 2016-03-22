@@ -208,20 +208,24 @@ public class Piece : MonoBehaviour {
 
 
 	//adds flick gesture, rigidbody, limits dragging to 2 finger drags
-	private void ThisPieceIsADice() {
+	public void ThisPieceIsADice() {
 		myColor = Color.white;
 		GetComponent<TransformGesture> ().MinTouches = 2;
 
 		gameObject.AddComponent<FlickGesture> ();
 		GetComponent<FlickGesture>().Flicked += DiceFlick;
 
-		gameObject.AddComponent<Rigidbody> ();
+		if (gameObject.GetComponent<Rigidbody>() == null)
+			gameObject.AddComponent<Rigidbody> ();
 		GetComponent<Rigidbody> ().mass = 0.1f;
 		GetComponent<Rigidbody> ().angularDrag = 0.8f;
 
-		gameObject.AddComponent<BoxCollider> ();
-
+		if (gameObject.GetComponent<BoxCollider>() == null)
+			gameObject.AddComponent<BoxCollider> ();
+		gameObject.GetComponent<BoxCollider> ().size = new Vector3 (5.0f, 5.0f, 5.0f);
 		gameObject.layer = 8;	//Dice Layer
+
+		gameObject.tag = "Dice";
 	}
 
 }
