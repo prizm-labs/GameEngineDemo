@@ -66,7 +66,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		if (m_DraggingIcon != null)
 			Destroy(m_DraggingIcon);
 
-		Vector3 location = Camera.main.ScreenToWorldPoint(new Vector3 (eventData.position.x, eventData.position.y, Camera.main.nearClipPlane));
+		Vector3 location = Camera.main.ScreenToWorldPoint(new Vector3 (eventData.position.x, eventData.position.y, Camera.main.nearClipPlane +1));
 
 		Instantiate (cube, location, Quaternion.identity);
 		/*
