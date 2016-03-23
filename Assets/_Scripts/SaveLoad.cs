@@ -26,7 +26,7 @@ public class SaveLoad : MonoBehaviour {
 			Destroy (t.gameObject);
 		}
 		for (int i = 0; i < LevelSerializer.SavedGames [LevelSerializer.PlayerName].Count; i++ ){
-			CreateNewButton (LevelSerializer.SavedGames [LevelSerializer.PlayerName] [i], LevelSerializer.SavedGames [LevelSerializer.PlayerName].Count - 1 - i);
+			CreateNewButton (LevelSerializer.SavedGames [LevelSerializer.PlayerName] [i], LevelSerializer.SavedGames [LevelSerializer.PlayerName].Count -1 - i);
 
 		}/*
 		foreach (LevelSerializer.SaveEntry sg in LevelSerializer.SavedGames[LevelSerializer.PlayerName]) {
