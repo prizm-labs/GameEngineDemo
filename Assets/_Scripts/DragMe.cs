@@ -11,6 +11,13 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	private GameObject m_DraggingIcon;
 	private RectTransform m_DraggingPlane;
 
+
+	//set these two fields when in UI mode
+	public ObjectCreatorButtons buttonName;
+	public TypeOfPiece typeToInstantiate;
+	public int numberToInstantiate = 1;
+
+
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		var canvas = FindInParents<Canvas>(gameObject);
@@ -66,23 +73,19 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		if (m_DraggingIcon != null)
 			Destroy(m_DraggingIcon);
 
-		Vector3 location = Camera.main.ScreenToWorldPoint(new Vector3 (eventData.position.x, eventData.position.y, Camera.main.nearClipPlane +1));
+		Vector3 location = Camera.main.ScreenToWorldPoint(new Vector3 (eventData.position.x, eventData.position.y, GameManager.DistanceFromCamera));
 
-		Instantiate (cube, location, Quaternion.identity);
-		/*
-		Ray ray = Camera.main.ScreenPointToRay (location);
-		RaycastHit hit; 
 
-		if (Physics.Raycast (ray, out hit, 100)) {
-			string tagOfObject = hit.transform.tag;
-			Debug.LogError (tagOfObject);
+		numberToInstantiate = Mathf.FloorToInt(transform.parent.parent.parent.parent.Find ("QuantitySlider").GetComponent<Slider> ().value);
+		Debug.Log ("released, instantiating new object, quantity: " + numberToInstantiate.ToString());
+
+		for (int i = 0; i < numberToInstantiate; i++) {
+			GameObject newPiece = Instantiate (Resources.Load ("Piece", typeof(GameObject))) as GameObject;
+			newPiece.GetComponent<Piece> ().myCategory = buttonName;
+			newPiece.GetComponent<Piece> ().myType = typeToInstantiate;
+			newPiece.GetComponent<Piece> ().Bootstrap ();
+			newPiece.transform.position = location;
 		}
-*/
-
-
-
-
-
 	}
 
 	static public T FindInParents<T>(GameObject go) where T : Component
