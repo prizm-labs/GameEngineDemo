@@ -11,6 +11,8 @@ GameObject:
   - 33: {fileID: 3355048}
   - 23: {fileID: 2326686}
   - 95: {fileID: 9508274}
+  - 114: {fileID: 11410274}
+  - 114: {fileID: 11423042}
   m_Layer: 0
   m_Name: dice6_blue
   m_TagString: Untagged
@@ -80,6 +82,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11410274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: ab98a165-8bf6-434d-9c0f-130d1ec4b917
+  classId: 3f40c4c3-fe7d-4650-9431-b6554381ee71
+  StoreAllComponents: 1
+  Components: []
+--- !u!114 &11423042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
