@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e20db851330cc44ab42e9d0f7adbb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storeObjectColor: {r: 0, g: 0.8014706, b: 0.17134883, a: 0}
+  storeObjectColor: {r: 0, g: 0.8014706, b: 0.17134883, a: 1}
 --- !u!1 &148289044
 GameObject:
   m_ObjectHideFlags: 0
@@ -9130,7 +9130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7debdd6cf0c58417c8b76cf5f31b1c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - gameObject: {fileID: 0}
+    Id: 013fcc96-a5f3-4623-b1b8-77b2106fe639
 --- !u!1 &1713301321
 GameObject:
   m_ObjectHideFlags: 0

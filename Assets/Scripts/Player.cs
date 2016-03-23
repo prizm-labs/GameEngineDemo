@@ -12,7 +12,8 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public List<Piece> myOwnedPieces;
+	public List<Piece> myOwnedPieces = new List<Piece>();
+	public List<Card> myOwnedCards = new List<Card>();
 
 	public int myNumSoldiers;
 	public int myNumCalvalry;

@@ -21,6 +21,9 @@ public class Piece : MonoBehaviour {
 		}
 	}
 		
+
+	public static Color defaultNewPieceColor = Color.yellow;
+
 	private ObjectCreatorButtons _myCategory;
 	public ObjectCreatorButtons myCategory {
 		get { return _myCategory; }
@@ -65,6 +68,8 @@ public class Piece : MonoBehaviour {
 
 	public List<AudioClip> myAudioClips = new List<AudioClip>();
 
+	//used only if the piece is a deck of cards
+	private List<GameObject> myPotentialCardPrefabs;
 
 
 	void Awake() {
@@ -102,13 +107,35 @@ public class Piece : MonoBehaviour {
 	private IEnumerator _Bootstrap() {
 		yield return StartCoroutine (LoadMesh ());
 		yield return StartCoroutine (LoadAudio ());
+		yield return StartCoroutine (AddSaveGameComponents ());
 
 		if (myCategory == ObjectCreatorButtons.Dice) {
 			ThisPieceIsADice ();
+		} else if (myCategory == ObjectCreatorButtons.Cards) {
+			ThisPieceIsADeckOfCards ();
 		}
 		bootstrapped = true;
 		Debug.Log ("_Bootstrap() completed!");
 	}
+
+	private IEnumerator AddSaveGameComponents() {
+		
+		transform.GetChild (0).gameObject.AddComponent<StoreInformation> ();
+		if (transform.GetChild (0).gameObject.GetComponent<MeshRenderer> () != null) {	//if the child has a mesh renderer, we we need to store its material
+			transform.GetChild(0).gameObject.AddComponent<StoreMaterials>();
+		}
+
+
+		foreach (Transform child in transform.GetChild(0)) {
+			child.gameObject.AddComponent<StoreInformation> ();
+			if (child.gameObject.GetComponent<MeshRenderer> () != null) {
+				child.gameObject.AddComponent<StoreMaterials> ();
+			}
+		}
+
+		yield return null;
+	}
+
 	private IEnumerator LoadMesh() {
 		Debug.Log ("loading meshrenderer from resources folder");
 
@@ -122,13 +149,23 @@ public class Piece : MonoBehaviour {
 		childMeshobject.transform.localPosition = Vector3.zero;
 
 		//correct the color on all of the meshes (dice should stay whatever color they are)
-		if (myCategory != ObjectCreatorButtons.Dice) {
+		if (myCategory != ObjectCreatorButtons.Dice && myCategory != ObjectCreatorButtons.Cards) {
+
+			if (childMeshobject.GetComponent<MeshRenderer> () != null) {
+				MeshRenderer tempMesh = childMeshobject.GetComponent<MeshRenderer> ();
+				tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
+				tempMesh.materials [0].name = "storeMaterial_" + childMeshobject.name;
+				tempMesh.materials [0].color = defaultNewPieceColor;		//set the unowned objects color to gray
+				tempMesh.materials[0].shader = Shader.Find("Standard");
+			}
+
 			for (int i = 0; i < transform.GetChild(0).childCount; i++) {
 				if (transform.GetChild(0).GetChild (i).gameObject.GetComponent<MeshRenderer> () != null) {
 					MeshRenderer tempMesh = transform.GetChild(0).GetChild (i).gameObject.GetComponent<MeshRenderer> ();
 					tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
 					tempMesh.materials [0].name = "fuck";
-					tempMesh.materials [0].color = Color.blue;		//set the unowned objects color to gray
+					tempMesh.materials [0].color = defaultNewPieceColor;		//set the unowned objects color to gray
+					tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
 				}
 			}
 		}
@@ -168,6 +205,11 @@ public class Piece : MonoBehaviour {
 		Debug.Log ("setting all the meshes colors to: " + newColor.ToString ());
 
 		//correct the color on all of the meshes
+
+		if (gameObject.GetComponent<MeshRenderer> () != null) {
+			gameObject.GetComponent<MeshRenderer> ().material.color = newColor;
+		}
+
 		for (int i = 0; i < transform.childCount; i++) {
 			if (transform.GetChild(i).gameObject.GetComponent<MeshRenderer>() != null) {
 				MeshRenderer tempMesh = transform.GetChild (i).gameObject.GetComponent<MeshRenderer> ();
@@ -177,10 +219,14 @@ public class Piece : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter(Collision coll) {
+		Debug.Log ("Collided with: " + coll.gameObject.name);
+	}
+
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("collided with: " + other.name);
+		Debug.Log ("triggered with: " + other.name);
 		if (other.tag == "player") {
-			Debug.Log ("collided with player, setting our color to their color");
+			Debug.Log ("triggered with player, setting our color to their color");
 			Player myNewOwner = other.gameObject.GetComponent<Player> ();
 			myColor = myNewOwner.myColor;
 			if (!myNewOwner.myOwnedPieces.Contains (this)) {
@@ -226,10 +272,44 @@ public class Piece : MonoBehaviour {
 
 		if (gameObject.GetComponent<BoxCollider>() == null)
 			gameObject.AddComponent<BoxCollider> ();
-		gameObject.GetComponent<BoxCollider> ().size = new Vector3 (5.0f, 5.0f, 5.0f);
+		//gameObject.GetComponent<BoxCollider> ().size = new Vector3 (5.0f, 5.0f, 5.0f);
+		gameObject.GetComponent<BoxCollider> ().isTrigger = false;
 		gameObject.layer = 8;	//Dice Layer
 
 		gameObject.tag = "Dice";
+	}
+
+	//adds double tap gesture to spawn a card of its category
+	private void ThisPieceIsADeckOfCards() {
+		myPotentialCardPrefabs = new List<GameObject>(Resources.LoadAll (myCategory.ToString() + "/" + myType.ToString () + "Cards", typeof(GameObject)).Cast<GameObject>().ToArray());
+
+		if (gameObject.GetComponent<TapGesture> () == null) {
+			gameObject.AddComponent<TapGesture> ();
+		}
+		gameObject.GetComponent<TapGesture> ().NumberOfTapsRequired = 2;
+		gameObject.GetComponent<TapGesture>().Tapped += DeckTapped;
+
+		//if (gameObject.GetComponent<BoxCollider>() == null)
+		//	gameObject.AddComponent<BoxCollider> ();
+		//gameObject.GetComponent<BoxCollider> ().size = new Vector3 (5.0f, 5.0f, 5.0f);S
+	}
+
+	void DeckTapped (object sender, EventArgs e)
+	{
+		DrawRandomCardFromDeck ();
+	}
+
+	private void DrawRandomCardFromDeck() {
+		int randomCardIndex = UnityEngine.Random.Range (0, myPotentialCardPrefabs.Count - 1);
+
+		GameObject newCard = Instantiate (myPotentialCardPrefabs [randomCardIndex]);
+		newCard.transform.position = transform.position + Vector3.up * 8;
+		if (newCard.name.ToLower ().Contains ("risk")) {
+			newCard.transform.localScale = Vector3.one * 10.0f;
+		} else {
+			newCard.transform.localScale = Vector3.one * 150.0f;
+		}
+		newCard.GetComponent<Card> ().FlipMeOver ();
 	}
 
 }

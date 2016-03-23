@@ -25,8 +25,7 @@ public class ApplyTransform : MonoBehaviour {
 		//myReleaseGesture = GetComponent<ReleaseGesture> ();
 		//Debug.Log ("my press gesture: " + myPressGesture.ToString ());
 
-		maxScaling = transform.localScale * 2.5f;
-		minScaling = transform.localScale * 0.75f;
+
 	}
 
 	void OnEnable() {
@@ -34,6 +33,9 @@ public class ApplyTransform : MonoBehaviour {
 			myTransformGesture.Transformed += MyTransformGesture_Transformed;
 		//myPressGesture.Pressed += MyPressGesture_Pressed;
 		//myReleaseGesture.Released += MyReleaseGesture_Released;
+		maxScaling = transform.localScale * 2.5f;
+		minScaling = transform.localScale * 0.75f;
+		Debug.Log ("min scaling set: " + minScaling.ToString ());
 	}
 	
 	void OnDisable() {
@@ -52,7 +54,7 @@ public class ApplyTransform : MonoBehaviour {
 			this.transform.localScale = maxScaling;
 		}
 		if (this.transform.localScale.sqrMagnitude < minScaling.sqrMagnitude) {
-			Debug.Log ("we are too small");
+			Debug.Log ("we are too small, our min magnitude is: " + minScaling.sqrMagnitude.ToString() + ", when we are this big: " + this.transform.localScale.sqrMagnitude.ToString());
 			this.transform.localScale = minScaling;
 		}
 
