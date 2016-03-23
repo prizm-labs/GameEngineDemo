@@ -113,6 +113,10 @@ public class Piece : MonoBehaviour {
 		Debug.Log ("loading meshrenderer from resources folder");
 
 		GameObject piecePrefab = Resources.Load (myCategory + "/" + myType.ToString (), typeof(GameObject)) as GameObject;
+		if (piecePrefab == null) {
+			Debug.LogError ("missing resource for: " + myCategory + "/" + myType.ToString ());
+			yield break;
+		}
 		childMeshobject = Instantiate (piecePrefab);
 		childMeshobject.transform.SetParent (this.transform);
 		childMeshobject.transform.localPosition = Vector3.zero;
