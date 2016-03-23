@@ -1658,8 +1658,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 603486691}
   m_HandleRect: {fileID: 603486690}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.84239113
+  m_Value: 0.0000013154129
+  m_Size: 0.8423913
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6424,7 +6424,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0.6764706, b: 0, a: 1}
     m_HighlightedColor: {r: 0, g: 0.71323526, b: 0, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0, g: 0.7647059, b: 0.25841793, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7446,7 +7446,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 58, y: 412.25}
+  m_AnchoredPosition: {x: 57.999756, y: 412.25}
   m_SizeDelta: {x: 116, y: 824.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1181788830
@@ -10521,7 +10521,7 @@ MonoBehaviour:
   m_Content: {fileID: 1181788829}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
