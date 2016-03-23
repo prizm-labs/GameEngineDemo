@@ -11,8 +11,6 @@ GameObject:
   - 33: {fileID: 3329820}
   - 23: {fileID: 2379026}
   - 95: {fileID: 9567862}
-  - 114: {fileID: 11421790}
-  - 114: {fileID: 11494266}
   m_Layer: 0
   m_Name: dice6
   m_TagString: Untagged
@@ -82,33 +80,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11421790
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: d8616974-fefb-452a-a457-111165d6cb7a
-  classId: 2f49f42e-6315-4488-8498-05acea12743b
-  StoreAllComponents: 1
-  Components: []
---- !u!114 &11494266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

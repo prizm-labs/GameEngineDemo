@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437824}
-  - 114: {fileID: 11459556}
   m_Layer: 0
   m_Name: pyramid
   m_TagString: Untagged
@@ -26,8 +25,6 @@ GameObject:
   - 4: {fileID: 478430}
   - 33: {fileID: 3397732}
   - 23: {fileID: 2308942}
-  - 114: {fileID: 11406298}
-  - 114: {fileID: 11456174}
   m_Layer: 0
   m_Name: pyramidMesh
   m_TagString: Untagged
@@ -93,54 +90,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 183814}
   m_Mesh: {fileID: 4300000, guid: 4530a599c38bd354e888324c54a542ed, type: 3}
---- !u!114 &11406298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: 
-  classId: df8a8069-918d-46eb-8c55-801ac7cc1d7c
-  StoreAllComponents: 1
-  Components: []
---- !u!114 &11456174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: 
-  classId: b0dbeb6b-ca95-46e8-92c8-2aea46dd927b
-  StoreAllComponents: 1
-  Components: []
---- !u!114 &11459556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 130864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: 
-  classId: 6b54dbc4-074a-4734-a400-9e8bdff0a622
-  StoreAllComponents: 1
-  Components: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ public class Piece : MonoBehaviour {
 	}
 		
 
-	public static Color defaultNewPieceColor = Color.yellow;
+	public static Color defaultNewPieceColor = Color.green;
 
 	private ObjectCreatorButtons _myCategory;
 	public ObjectCreatorButtons myCategory {
@@ -53,7 +53,7 @@ public class Piece : MonoBehaviour {
 		set {
 			_myColor = value;
 			Debug.Log ("setting color of material to: " + _myColor.ToString());
-			SetMeshesColors (_myColor);
+			//SetMeshesColors (_myColor);
 		}
 	}
 		
@@ -71,6 +71,7 @@ public class Piece : MonoBehaviour {
 	//used only if the piece is a deck of cards
 	private List<GameObject> myPotentialCardPrefabs;
 
+	public Color myStoredColor;
 
 	void Awake() {
 		meshFilter = GetComponent<MeshFilter> ();
@@ -80,6 +81,15 @@ public class Piece : MonoBehaviour {
 	void Start () {
 		gameObject.AddComponent<ApplyTransform> ();
 		myLocation = Location.onBoard;
+
+		/*
+		if (myStoredColor != null) {
+			SetMeshesColors (myStoredColor);
+		} else {
+			Debug.Log ("setting stored color to myColor");
+			myStoredColor = myColor;
+		}
+		*/
 	}
 
 
@@ -267,7 +277,8 @@ public class Piece : MonoBehaviour {
 
 		if (gameObject.GetComponent<Rigidbody>() == null)
 			gameObject.AddComponent<Rigidbody> ();
-		GetComponent<Rigidbody> ().mass = 0.1f;
+		GetComponent<Rigidbody> ().mass = 0.5f;
+		GetComponent<Rigidbody>().
 		GetComponent<Rigidbody> ().angularDrag = 0.8f;
 
 		if (gameObject.GetComponent<BoxCollider>() == null)

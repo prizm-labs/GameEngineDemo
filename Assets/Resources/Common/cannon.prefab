@@ -10,8 +10,6 @@ GameObject:
   - 4: {fileID: 431806}
   - 33: {fileID: 3399078}
   - 23: {fileID: 2352694}
-  - 114: {fileID: 11464566}
-  - 114: {fileID: 11401572}
   m_Layer: 0
   m_Name: VoC-36P_MeshPart0
   m_TagString: Untagged
@@ -27,7 +25,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418736}
-  - 114: {fileID: 11464208}
   m_Layer: 0
   m_Name: cannon
   m_TagString: Untagged
@@ -45,8 +42,6 @@ GameObject:
   - 4: {fileID: 472522}
   - 33: {fileID: 3381292}
   - 23: {fileID: 2388668}
-  - 114: {fileID: 11403742}
-  - 114: {fileID: 11450456}
   m_Layer: 0
   m_Name: VoC-36P_MeshPart1
   m_TagString: Untagged
@@ -64,8 +59,6 @@ GameObject:
   - 4: {fileID: 403710}
   - 33: {fileID: 3380792}
   - 23: {fileID: 2358014}
-  - 114: {fileID: 11446328}
-  - 114: {fileID: 11492388}
   m_Layer: 0
   m_Name: VoC-36P_MeshPart2
   m_TagString: Untagged
@@ -223,103 +216,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113416}
   m_Mesh: {fileID: 4300000, guid: a7161b4071dda9a4995d83d126a935cb, type: 3}
---- !u!114 &11401572
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: d6445d58-438d-4d86-b59f-2938554a28c7
-  classId: de51507a-5e72-4dd2-aedc-dfc1a6a9081a
-  StoreAllComponents: 1
-  Components: []
---- !u!114 &11403742
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11446328
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11450456
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: 759d9b80-2cb9-4b4e-9399-79bb1c84617a
-  classId: 3a09a894-036b-45e1-9438-823ce2ba823b
-  StoreAllComponents: 1
-  Components: []
---- !u!114 &11464208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: 6970aaf9-abff-42e5-b392-c218b95565f5
-  classId: 2079a97e-603a-497e-aeb9-4589075f5777
-  StoreAllComponents: 1
-  Components: []
---- !u!114 &11464566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 113416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11492388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: f40bf6e8-c8da-4a4a-89dc-540faee0a4f2
-  classId: b052f131-5866-4a2f-924b-f1ceee2e7616
-  StoreAllComponents: 1
-  Components: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

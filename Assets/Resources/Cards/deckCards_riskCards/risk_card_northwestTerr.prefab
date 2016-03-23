@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 492700}
   - 212: {fileID: 21290116}
+  - 114: {fileID: 11425910}
+  - 114: {fileID: 11464066}
   m_Layer: 0
   m_Name: back
   m_TagString: Untagged
@@ -31,6 +33,8 @@ GameObject:
   - 114: {fileID: 11471102}
   - 114: {fileID: 11420314}
   - 114: {fileID: 11439562}
+  - 114: {fileID: 11456276}
+  - 114: {fileID: 11430042}
   m_Layer: 0
   m_Name: risk_card_northwestTerr
   m_TagString: Untagged
@@ -86,6 +90,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faa01f1c41a5394bbe959b97208d101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11425910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: a5fa1da9-648b-4b1c-b588-c7f0c3945689
+  StoreAllComponents: 1
+  Components: []
+--- !u!114 &11430042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11439562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +141,22 @@ MonoBehaviour:
   numberOfTapsRequired: 1
   timeLimit: Infinity
   distanceLimit: Infinity
+--- !u!114 &11456276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: 1aeb22fc-12f2-4f50-a25e-f84d10deda1a
+  StoreAllComponents: 1
+  Components: []
 --- !u!114 &11459598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,6 +169,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeTouches: 0
+--- !u!114 &11464066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11471102
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 469568}
   - 212: {fileID: 21253816}
+  - 114: {fileID: 11445536}
+  - 114: {fileID: 11410004}
   m_Layer: 0
   m_Name: back
   m_TagString: Untagged
@@ -31,6 +33,8 @@ GameObject:
   - 114: {fileID: 11443416}
   - 114: {fileID: 11483362}
   - 114: {fileID: 11476136}
+  - 114: {fileID: 11472534}
+  - 114: {fileID: 11412390}
   m_Layer: 0
   m_Name: risk_card_eastAfrica
   m_TagString: Untagged
@@ -75,6 +79,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11410004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11412390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11443416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,6 +117,22 @@ MonoBehaviour:
   classId: c82bf9e0-987d-446d-b020-dd2a3e502145
   StoreAllComponents: 1
   Components: []
+--- !u!114 &11445536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: 8e721c4f-e2ad-40cb-981b-aa985ab1a132
+  StoreAllComponents: 1
+  Components: []
 --- !u!114 &11450026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +145,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeTouches: 0
+--- !u!114 &11472534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: 716c1505-edcc-4c59-967d-5b6c3036665a
+  StoreAllComponents: 1
+  Components: []
 --- !u!114 &11476136
 MonoBehaviour:
   m_ObjectHideFlags: 1

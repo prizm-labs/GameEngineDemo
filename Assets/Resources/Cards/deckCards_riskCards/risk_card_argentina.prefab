@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 497544}
   - 212: {fileID: 21234876}
+  - 114: {fileID: 11403498}
+  - 114: {fileID: 11462978}
   m_Layer: 0
   m_Name: back
   m_TagString: Untagged
@@ -31,6 +33,8 @@ GameObject:
   - 114: {fileID: 11492298}
   - 114: {fileID: 11441490}
   - 114: {fileID: 11452014}
+  - 114: {fileID: 11456174}
+  - 114: {fileID: 11406914}
   m_Layer: 0
   m_Name: risk_card_argentina
   m_TagString: Untagged
@@ -75,6 +79,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11403498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: ac9f28c5-8ac1-431e-8b30-46fad1fa5a2a
+  StoreAllComponents: 1
+  Components: []
+--- !u!114 &11406914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11441490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,6 +141,33 @@ MonoBehaviour:
   numberOfTapsRequired: 1
   timeLimit: Infinity
   distanceLimit: Infinity
+--- !u!114 &11456174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: 3cbd7dac-0644-4147-86e6-508308228d14
+  StoreAllComponents: 1
+  Components: []
+--- !u!114 &11462978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11473258
 MonoBehaviour:
   m_ObjectHideFlags: 1

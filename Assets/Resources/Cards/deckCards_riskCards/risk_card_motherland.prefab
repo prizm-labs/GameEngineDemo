@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 427474}
   - 212: {fileID: 21263226}
+  - 114: {fileID: 11471070}
+  - 114: {fileID: 11493812}
   m_Layer: 0
   m_Name: back
   m_TagString: Untagged
@@ -31,6 +33,8 @@ GameObject:
   - 114: {fileID: 11472780}
   - 114: {fileID: 11421316}
   - 114: {fileID: 11416416}
+  - 114: {fileID: 11468480}
+  - 114: {fileID: 11401786}
   m_Layer: 0
   m_Name: risk_card_motherland
   m_TagString: Untagged
@@ -75,6 +79,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11401786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11416416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +151,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8faa01f1c41a5394bbe959b97208d101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11468480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: 5c28cc35-c70b-4c9e-aeaf-803f98597653
+  StoreAllComponents: 1
+  Components: []
 --- !u!114 &11470524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +179,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeTouches: 0
+--- !u!114 &11471070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: 
+  classId: 38c5aedb-d074-437e-81cc-b43bb298a28b
+  StoreAllComponents: 1
+  Components: []
 --- !u!114 &11472780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,6 +211,17 @@ MonoBehaviour:
   classId: 73e57bdf-4537-4e24-9c63-14398513640e
   StoreAllComponents: 1
   Components: []
+--- !u!114 &11493812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21223022
 SpriteRenderer:
   m_ObjectHideFlags: 1
