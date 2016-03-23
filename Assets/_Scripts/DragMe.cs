@@ -76,7 +76,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		Vector3 location = Camera.main.ScreenToWorldPoint(new Vector3 (eventData.position.x, eventData.position.y, GameManager.DistanceFromCamera));
 
 
-		numberToInstantiate = Mathf.FloorToInt(transform.parent.parent.parent.parent.Find ("QuantitySlider").GetComponent<Slider> ().value);
+		numberToInstantiate = Mathf.RoundToInt(transform.parent.parent.parent.parent.Find ("QuantitySlider").GetComponent<Slider> ().value);
 		Debug.Log ("released, instantiating new object, quantity: " + numberToInstantiate.ToString());
 
 		for (int i = 0; i < numberToInstantiate; i++) {

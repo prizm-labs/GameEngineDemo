@@ -57,44 +57,48 @@ public class CategoryInitializer : MonoBehaviour {
 			foreach (GameObject meshObjPrefab in MeshObjects) {
 				//Debug.Log ("found meshObject: " + meshObjPrefab.name);
 
-				TypeOfPiece thisGuysType= (TypeOfPiece) System.Enum.Parse (typeof(TypeOfPiece), meshObjPrefab.name);
+				try {
+					TypeOfPiece thisGuysType = (TypeOfPiece) System.Enum.Parse (typeof(TypeOfPiece), meshObjPrefab.name);
 
-				GameObject meshObj = Instantiate (meshObjPrefab);
-				meshObj.transform.SetParent (LoadNewRotatingPic().transform);
-				meshObj.transform.localPosition = Vector3.zero;
-				meshObj.transform.localEulerAngles = new Vector3 (10, 10, 30);
+					GameObject meshObj = Instantiate (meshObjPrefab);
+					meshObj.transform.SetParent (LoadNewRotatingPic().transform);
+					meshObj.transform.localPosition = Vector3.zero;
+					meshObj.transform.localEulerAngles = new Vector3 (10, 10, 30);
 
-				if (category != ObjectCreatorButtons.Dice.ToString ()) {
-					if (meshObj.GetComponent<MeshRenderer> () != null) {
-						MeshRenderer tempMesh = meshObj.GetComponent<MeshRenderer> ();
-						tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
-						tempMesh.materials [0].name = "storeMaterial_" + meshObj.name;
-						tempMesh.materials [0].color = storeObjectColor;		//set the unowned objects color to gray
-						tempMesh.materials[0].shader = Shader.Find("Standard");
-					}
-					for (int i = 0; i < meshObj.transform.childCount; i++) {
-						if (meshObj.transform.GetChild(i).GetComponent<MeshRenderer> () != null) {
-							MeshRenderer tempMesh = meshObj.transform.GetChild(i).GetComponent<MeshRenderer> ();
+					if (category != ObjectCreatorButtons.Dice.ToString () && category != ObjectCreatorButtons.Cards.ToString()) {
+						if (meshObj.GetComponent<MeshRenderer> () != null) {
+							MeshRenderer tempMesh = meshObj.GetComponent<MeshRenderer> ();
 							tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
 							tempMesh.materials [0].name = "storeMaterial_" + meshObj.name;
 							tempMesh.materials [0].color = storeObjectColor;		//set the unowned objects color to gray
 							tempMesh.materials[0].shader = Shader.Find("Standard");
 						}
+						for (int i = 0; i < meshObj.transform.childCount; i++) {
+							if (meshObj.transform.GetChild(i).GetComponent<MeshRenderer> () != null) {
+								MeshRenderer tempMesh = meshObj.transform.GetChild(i).GetComponent<MeshRenderer> ();
+								tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
+								tempMesh.materials [0].name = "storeMaterial_" + meshObj.name;
+								tempMesh.materials [0].color = storeObjectColor;		//set the unowned objects color to gray
+								tempMesh.materials[0].shader = Shader.Find("Standard");
+							}
+						}
 					}
+
+
+					//take care of instanced textures
+					RenderTexture instancedRenderTexture = new RenderTexture(320, 240, 1);
+					instancedRenderTexture.name = "instancedRenderTexture" + thisGuysType.ToString();
+					meshObj.transform.parent.parent.gameObject.GetComponent<Camera> ().targetTexture = instancedRenderTexture;
+
+
+					allCachedTexturesList [category].Add (instancedRenderTexture);
+					allCachedObjectsTypes [category].Add (thisGuysType);
+
+					//Debug.Log ("added object:  " + meshObj.name + " to category: " + category + "with rendered texture: " + instancedRenderTexture.name + " which a type: " + instancedRenderTexture.ToString());
+				} catch (System.ArgumentException e) {
+					Debug.LogError (meshObjPrefab.name + " wasn't in the types enum, going to try to skip");
+					Debug.LogWarning (e);
 				}
-
-
-				//take care of instanced textures
-				RenderTexture instancedRenderTexture = new RenderTexture(320, 240, 1);
-				instancedRenderTexture.name = "instancedRenderTexture" + thisGuysType.ToString();
-				meshObj.transform.parent.parent.gameObject.GetComponent<Camera> ().targetTexture = instancedRenderTexture;
-
-
-				allCachedTexturesList [category].Add (instancedRenderTexture);
-				allCachedObjectsTypes [category].Add (thisGuysType);
-
-				//Debug.Log ("added object:  " + meshObj.name + " to category: " + category + "with rendered texture: " + instancedRenderTexture.name + " which a type: " + instancedRenderTexture.ToString());
-
 			}
 		}
 
