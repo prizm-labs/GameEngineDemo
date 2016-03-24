@@ -49,9 +49,6 @@ public class Piece : MonoBehaviour {
 		get { return _myColor;}
 		set {
 			_myColor = value;
-			Debug.Log ("setting color of " + gameObject.name + " to: " + _myColor.ToString());
-			Debug.Log ("ps, we are bootstrapped: " + bootstrapped.ToString ());
-
 			//this code runs if the piece was created by the save game manager (already was bootstrapped by DraMe)
 			if (bootstrapped) {
 				SetMeshesColorsDelay (_myColor);
@@ -333,7 +330,7 @@ public class Piece : MonoBehaviour {
 			Debug.LogError ("we have no audioClips for: " + name);
 			return;
 		}
-
+		audioSource.volume = SoundManager.Instance.globalSFXVolume;
 		audioSource.clip = myAudioClips [UnityEngine.Random.Range (0, myAudioClips.Count - 1)];
 		audioSource.Play ();
 	}

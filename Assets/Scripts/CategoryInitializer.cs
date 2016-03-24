@@ -71,9 +71,40 @@ public class CategoryInitializer : MonoBehaviour {
 		instancedRenderTexture.name = "instancedRenderTexture" + TypeOfPiece.cannon.ToString();
 		meshObj.transform.parent.parent.gameObject.GetComponent<Camera> ().targetTexture = instancedRenderTexture;
 
-
 		allCachedTexturesList ["Custom"].Add (instancedRenderTexture);
 		allCachedObjectsTypes ["Custom"].Add (TypeOfPiece.cannon);
+	}
+
+	public RenderTexture GetCannonRenderTexture() {
+		GameObject CannonMeshPrefab = Resources.Load ("Custom/cannon", typeof(GameObject)) as GameObject;
+		GameObject meshObj = Instantiate (CannonMeshPrefab);
+		meshObj.transform.SetParent (LoadNewRotatingPic ().transform);
+		meshObj.transform.localPosition = Vector3.zero;
+		meshObj.transform.localEulerAngles = new Vector3 (10, 10, 30);
+
+		//set mesh color
+		if (meshObj.GetComponent<MeshRenderer> () != null) {
+			MeshRenderer tempMesh = meshObj.GetComponent<MeshRenderer> ();
+			tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
+			tempMesh.materials [0].name = "storeMaterial_" + meshObj.name;
+			tempMesh.materials [0].color = storeObjectColor;		//set the unowned objects color to gray
+			tempMesh.materials[0].shader = Shader.Find("Standard");
+		}
+		for (int i = 0; i < meshObj.transform.childCount; i++) {
+			if (meshObj.transform.GetChild(i).GetComponent<MeshRenderer> () != null) {
+				MeshRenderer tempMesh = meshObj.transform.GetChild(i).GetComponent<MeshRenderer> ();
+				tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
+				tempMesh.materials [0].name = "storeMaterial_" + meshObj.name;
+				tempMesh.materials [0].color = storeObjectColor;		//set the unowned objects color to gray
+				tempMesh.materials[0].shader = Shader.Find("Standard");
+			}
+		}
+
+		RenderTexture instancedRenderTexture = new RenderTexture(320, 240, 1);
+		instancedRenderTexture.name = "instancedRenderTexture" + TypeOfPiece.cannon.ToString();
+		meshObj.transform.parent.parent.gameObject.GetComponent<Camera> ().targetTexture = instancedRenderTexture;
+
+		return instancedRenderTexture;
 	}
 
 

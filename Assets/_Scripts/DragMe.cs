@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using System.Linq;
+using System.Collections.Generic;
 
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -76,6 +77,13 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		if (buttonName == ObjectCreatorButtons.LoadBG) {
 			Material boardMaterial = Resources.Load ("LoadBG/" + typeToInstantiate.ToString (), typeof(Material)) as Material;
 			GameObject.Find ("Floor").GetComponent<MeshRenderer> ().sharedMaterial = boardMaterial;
+
+
+			List<AudioClip> myAudioClips = new List<AudioClip>(Resources.LoadAll ("LoadBG/LoadBGSounds", typeof(AudioClip)).Cast<AudioClip>().ToArray());
+			if (myAudioClips.Count == 0) {
+				Debug.LogError ("no sounds for loading BG");
+			}
+			AudioSource.PlayClipAtPoint (myAudioClips [UnityEngine.Random.Range (0, myAudioClips.Count - 1)], SoundManager.Instance.mainCameraLocation, SoundManager.Instance.globalSFXVolume);
 		} else {
 			Vector3 location = Camera.main.ScreenToWorldPoint (new Vector3 (eventData.position.x, eventData.position.y, GameManager.DistanceFromCamera));
 			numberToInstantiate = Mathf.RoundToInt (transform.parent.parent.parent.parent.Find ("QuantitySlider").GetComponent<Slider> ().value);
