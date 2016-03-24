@@ -18,6 +18,16 @@ public class CategoryPopulator : MonoBehaviour {
 		MakeAllChildren ();
 	}
 
+	public void ReloadThisArea() {
+		//kill all children 
+		for (int i = 0; i < contentTransform.childCount; i++) {
+			Destroy (contentTransform.GetChild (i).gameObject);
+		}
+
+		//and then reload all children
+		MakeAllChildren();
+	}
+
 	public void MakeAllChildren() {
 		for (int i = 0; i < CategoryInitializer.Instance.allCachedTexturesList[typeToPopulate.ToString()].Count; i++) {
 			GameObject theImage = Instantiate (picturePrefab);
@@ -28,4 +38,6 @@ public class CategoryPopulator : MonoBehaviour {
 			theImage.transform.localScale = Vector3.one;
 		}
 	}
+
+
 }

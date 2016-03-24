@@ -25,16 +25,6 @@ public class Card : MonoBehaviour {
 		myTapGesture.NumberOfTapsRequired = 2;	//double tap will turn it over
 	}
 
-	void Start() {
-		Debug.LogError ("card recovering from save: " + recoveringFromSave.ToString ());
-
-		if (recoveringFromSave)
-			Debug.LogError ("THIS PIECE IS RECOVERING FROM A SAVE STATE");
-		else
-			recoveringFromSave = true;
-		
-	}
-
 	IEnumerator ReloadThisCardDelayed() {
 		yield return new WaitForSeconds (Constants.timeDelayToLoad);
 		ReloadThisCard ();

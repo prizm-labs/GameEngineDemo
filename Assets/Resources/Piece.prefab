@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11498114}
   - 82: {fileID: 8256986}
   - 114: {fileID: 11471756}
+  - 114: {fileID: 11440096}
   m_Layer: 0
   m_Name: Piece
   m_TagString: Untagged
@@ -118,6 +119,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &11440096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6be551879cd14d739b0188844ef2c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  advancedProps: 0
+  minTouches: 0
+  maxTouches: 0
+  combineTouches: 0
+  combineTouchesInterval: 0.3
+  useSendMessage: 0
+  sendStateChangeMessages: 0
+  sendMessageTarget: {fileID: 0}
+  requireGestureToFail: {fileID: 0}
+  friendlyGestures: []
+  ignoreChildren: 0
 --- !u!114 &11471756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,7 +168,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454599d59cf597b459ae2a34559fe76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  twoDimensional: 0
+  audioSource: {fileID: 0}
+  meshFilter: {fileID: 0}
+  childMeshobject: {fileID: 0}
+  bootstrapped: 0
   myAudioClips: []
+  myPotentialCardPrefabs: []
+  myStoredColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11498114
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -31,9 +31,6 @@ public class Piece : MonoBehaviour {
 		{
 			_myCategory = value; 
 
-			if (bootstrapped && myCategory == ObjectCreatorButtons.Dice) {
-				ThisPieceIsADice ();
-			}
 		}
 	}
 
@@ -115,13 +112,11 @@ public class Piece : MonoBehaviour {
 
 	void Start () {
 		gameObject.AddComponent<ApplyTransform> ();
+		gameObject.AddComponent<PressGesture> ();
+		gameObject.GetComponent<PressGesture>().Pressed += OnPressed;
 		myLocation = Location.onBoard;
-
-		if (bootstrapped)
-			Debug.LogError ("THIS PIECE WAS LOADED FROM A SAVE STATE");
-		else
-			Debug.LogError ("this piece was not loaded from a save state" + transform.GetChild(0).name);
 	}
+
 
 
 	void OnDisable() {
@@ -156,9 +151,11 @@ public class Piece : MonoBehaviour {
 		} else if (myCategory == ObjectCreatorButtons.Cards) {
 			ThisPieceIsADeckOfCards ();
 		}
+
 		bootstrapped = true;
 
 		myStoredColor = myColor;
+		PlayASound ();
 	}
 
 	private IEnumerator AddSaveGameComponents() {
@@ -249,6 +246,7 @@ public class Piece : MonoBehaviour {
 		yield return null;
 	}
 
+
 	void SetMeshesColorsDelay(Color newColor) {
 		StartCoroutine (WaitToSetMeshes (newColor));
 	}
@@ -323,6 +321,11 @@ public class Piece : MonoBehaviour {
 			transform.SetParent(null);
 			myLocation = Location.onBoard;
 		}
+	}
+
+	void OnPressed (object sender, EventArgs e)
+	{
+		PlayASound ();
 	}
 
 	public void PlayASound() {
