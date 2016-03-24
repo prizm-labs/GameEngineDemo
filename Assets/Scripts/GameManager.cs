@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 		mainCamera = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 
 		DistanceFromCamera = (mainCamera.gameObject.transform.position.y - GameObject.Find ("Floor").transform.position.y) * 0.3f;
-		Debug.Log ("distance from camera is set at: " + DistanceFromCamera.ToString ());
+		//Debug.Log ("distance from camera is set at: " + DistanceFromCamera.ToString ());
 
 		CreateBoundariesDice ();
 	}
