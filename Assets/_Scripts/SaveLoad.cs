@@ -42,7 +42,19 @@ public class SaveLoad : MonoBehaviour {
 		newButton.SetParent (SaveLoadContent);
 		newButtonScript.SetSavedGameCaption (sg.Caption);
 		newButtonScript.setSavedGameNumber (index);
-		newButtonScript.LoadGameButton.onClick.AddListener(() => LevelSerializer.LoadNow(sg.Data));
+		newButtonScript.LoadGameButton.onClick.AddListener(() => LoadGame(sg));
+		newButtonScript.DeleteGameSavedButton.onClick.AddListener (() => DeleteGameState(sg));
+	}
+
+
+	public void LoadGame(LevelSerializer.SaveEntry sg){
+		LevelSerializer.LoadNow (sg.Data);
+	}
+
+	public void DeleteGameState(LevelSerializer.SaveEntry sg){
+		sg.Delete ();
+		//LevelSerializer.SavedGames [LevelSerializer.PlayerName].Remove (sg);
+		RefreshLoadGameButtons();
 	}
 
 

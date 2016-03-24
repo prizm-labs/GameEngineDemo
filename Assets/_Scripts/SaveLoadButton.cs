@@ -7,6 +7,7 @@ public class SaveLoadButton : MonoBehaviour {
 
 	public Text SavedGameCaption;
 	public Button LoadGameButton;
+	public Button DeleteGameSavedButton;
 
 	// Use this for initialization
 	void Awake () {
@@ -22,6 +23,8 @@ public class SaveLoadButton : MonoBehaviour {
 				SavedGameCaption = t.GetComponent<Text>();
 			if (t.name == "Btn_Gamestate")
 				LoadGameButton = t.GetComponent<Button> ();
+			if (t.name == "Btn_DeleteGameState")
+				DeleteGameSavedButton = t.GetComponent<Button> ();
 		}
 	}
 
