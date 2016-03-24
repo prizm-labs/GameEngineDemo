@@ -67,11 +67,16 @@ public class Piece : MonoBehaviour {
 				}
 				if (myType.ToString ().ToLower ().Contains ("dice") || myType.ToString().ToLower().Contains("cards")) {
 					Debug.Log ("this piece is either a dice or a cardDeck, and was recovered from when saving.  Going to destroy it and create a new one");
-					NewPieceCreator.CreateNewPiece (myCategory, myType, transform.position);
-					Destroy (this.gameObject);
+					StartCoroutine (CreateNewPieceDelayed ());
 				}
 			}
 		}
+	}
+
+	IEnumerator CreateNewPieceDelayed() {
+		yield return new WaitForSeconds (Constants.timeDelayToLoad);
+		NewPieceCreator.CreateNewPiece (myCategory, myType, transform.position);
+		Destroy (this.gameObject);
 	}
 		
 
@@ -91,7 +96,6 @@ public class Piece : MonoBehaviour {
 				ReloadMyMaterial ();
 			}
 		}
-
 	}
 
 	public bool bootstrapped = false;
@@ -112,6 +116,11 @@ public class Piece : MonoBehaviour {
 	void Start () {
 		gameObject.AddComponent<ApplyTransform> ();
 		myLocation = Location.onBoard;
+
+		if (bootstrapped)
+			Debug.LogError ("THIS PIECE WAS LOADED FROM A SAVE STATE");
+		else
+			Debug.LogError ("this piece was not loaded from a save state" + transform.GetChild(0).name);
 	}
 
 
@@ -123,16 +132,17 @@ public class Piece : MonoBehaviour {
 
 	void DiceFlick (object sender, System.EventArgs e)
 	{
-		Debug.Log ("dice flicked");
+		//Debug.Log ("dice flicked");
 		//Debug.Log ("direction: " + GetComponent<FlickGesture> ().Direction.ToString ());
 
 		Vector3 flickDirection = new Vector3(GetComponent<FlickGesture>().ScreenFlickVector.x, 50.0f, GetComponent<FlickGesture>().ScreenFlickVector.y);
-		Debug.Log("vector: " + flickDirection);
+		//Debug.Log("vector: " + flickDirection);
 		GetComponent<Rigidbody> ().AddForce (flickDirection);
 		GetComponent<Rigidbody> ().AddTorque (flickDirection);
 	}
 
 	public void Bootstrap() {
+		Debug.Log ("Bootstrap() called");
 		StartCoroutine (_Bootstrap ());
 	}
 
@@ -149,8 +159,6 @@ public class Piece : MonoBehaviour {
 		bootstrapped = true;
 
 		myStoredColor = myColor;
-		Debug.Log ("_Bootstrap() completed!");
-		//SetMeshesColorsDelay (Color.cyan);
 	}
 
 	private IEnumerator AddSaveGameComponents() {
@@ -173,8 +181,6 @@ public class Piece : MonoBehaviour {
 	}
 
 	private IEnumerator LoadMesh() {
-		Debug.Log ("loading meshrenderer from resources folder");
-
 		GameObject piecePrefab = Resources.Load (myCategory + "/" + myType.ToString (), typeof(GameObject)) as GameObject;
 		if (piecePrefab == null) {
 			Debug.LogError ("missing resource for: " + myCategory + "/" + myType.ToString ());
@@ -189,7 +195,7 @@ public class Piece : MonoBehaviour {
 			myColor = defaultNewPieceColor;
 
 			Material tempMaterial = new Material (Shader.Find ("Standard"));
-			Debug.Log ("made temp material, name is: " + tempMaterial.name);
+			//Debug.Log ("made temp material, name is: " + tempMaterial.name);
 			tempMaterial.name = "instanceMaterial_" + childMeshobject.name;
 			tempMaterial.color = defaultNewPieceColor;
 			tempMaterial.shader = Shader.Find ("Standard");
@@ -199,9 +205,9 @@ public class Piece : MonoBehaviour {
 
 			if (childMeshobject.GetComponent<MeshRenderer> () != null) {
 				MeshRenderer tempMesh = childMeshobject.GetComponent<MeshRenderer> ();
-				Debug.Log ("trying to set material for main childmesh object to tempMaterial: " + tempMaterial.name);
+				//Debug.Log ("trying to set material for main childmesh object to tempMaterial: " + tempMaterial.name);
 				tempMesh.sharedMaterial = tempMaterial;
-				Debug.Log ("did the material get set? : " + tempMesh.sharedMaterial.name);
+				//Debug.Log ("did the material get set? : " + tempMesh.sharedMaterial.name);
 			}
 
 			for (int i = 0; i < transform.GetChild (0).childCount; i++) {
@@ -236,14 +242,10 @@ public class Piece : MonoBehaviour {
 	}
 
 	private IEnumerator LoadAudio() {
-		Debug.Log ("now going to try to load audio");
-
-
 		myAudioClips = new List<AudioClip>(Resources.LoadAll (myCategory.ToString() + "/" + myCategory.ToString () + "Sounds", typeof(AudioClip)).Cast<AudioClip>().ToArray());
 		if (myAudioClips.Count == 0) {
 			Debug.LogError ("no sounds for: " + myCategory + "/" + myType.ToString ());
 		}
-		Debug.Log ("sounds Loaded");
 		yield return null;
 	}
 
@@ -252,7 +254,7 @@ public class Piece : MonoBehaviour {
 	}
 
 	IEnumerator WaitToSetMeshes(Color theColor) {
-		yield return new WaitForSeconds (0.2f);
+		yield return new WaitForSeconds (Constants.timeDelayToLoad / 2);
 		SetMeshesColors (theColor);
 	}
 
@@ -279,7 +281,7 @@ public class Piece : MonoBehaviour {
 		}
 	}
 	void SetMeshesColors(Color newColor) {
-		Debug.Log ("setting all the meshes colors to: " + newColor.ToString ());
+		//Debug.Log ("setting all the meshes colors to: " + newColor.ToString ());
 
 		//correct the color on all of the meshes
 		if (transform.childCount == 0) return;
@@ -397,10 +399,10 @@ public class Piece : MonoBehaviour {
 		GameObject newCard = Instantiate (theCardPrefab);
 		string theDataPath = "Cards/deckCards";
 
-		if (newCard.name.ToLower ().Contains ("risk")) {
-			theDataPath += "_riskCards/" + newCard.name;
+		if (theCardPrefab.name.ToLower ().Contains ("risk")) {
+			theDataPath += "_riskCards/" + theCardPrefab.name;
 		} else {
-			theDataPath += "_playingCards/" + newCard.name;
+			theDataPath += "_playingCards/" + theCardPrefab.name;
 		}
 
 		Debug.Log("after drawing a random card, setting the card's data path to: " + theDataPath);

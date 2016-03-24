@@ -11,16 +11,8 @@ public class Card : MonoBehaviour {
 	public string myDataPath {
 		get { return _myDataPath; }
 		set {
-			Debug.Log ("someone tried to set myDataPath for CARD");
-			_myDataPath = value;
-			if (!recoveringFromSave) {
-				recoveringFromSave = true;
-				_myDataPath = value;
-				Debug.Log ("_myDataPath set: " + _myDataPath);
-			} else {
-				Debug.Log ("recovering this card from save: " + gameObject.name);
-				ReloadThisCard ();
-			}
+			Debug.Log ("someone tried to set myDataPath for CARD, assuming it was the serializer");
+			StartCoroutine(ReloadThisCardDelayed ());
 		}
 	}
 
@@ -31,6 +23,21 @@ public class Card : MonoBehaviour {
 		}
 
 		myTapGesture.NumberOfTapsRequired = 2;	//double tap will turn it over
+	}
+
+	void Start() {
+		Debug.LogError ("card recovering from save: " + recoveringFromSave.ToString ());
+
+		if (recoveringFromSave)
+			Debug.LogError ("THIS PIECE IS RECOVERING FROM A SAVE STATE");
+		else
+			recoveringFromSave = true;
+		
+	}
+
+	IEnumerator ReloadThisCardDelayed() {
+		yield return new WaitForSeconds (Constants.timeDelayToLoad);
+		ReloadThisCard ();
 	}
 
 	void ReloadThisCard() {
@@ -46,10 +53,14 @@ public class Card : MonoBehaviour {
 	}
 
 	void OnEnable() {
+		if (myTapGesture == null)
+			myTapGesture = GetComponent<TapGesture> ();
 		myTapGesture.Tapped += MyTapGesture_Tapped;
 	}
 
 	void OnDisable() {
+		if (myTapGesture == null)
+			myTapGesture = GetComponent<TapGesture> ();
 		myTapGesture.Tapped -= MyTapGesture_Tapped;
 	}
 

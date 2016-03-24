@@ -6,6 +6,7 @@ public enum TypeOfPiece {dice6 = 0, playerCircle, sprite2d, card, cannon, deckCa
 public enum Location {onBoard = 0, inDrawer}
 
 
-public class Constants : MonoBehaviour {
+public class Constants {
+	public static float timeDelayToLoad = 0.25f;
 
 }
