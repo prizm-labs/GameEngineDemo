@@ -463,7 +463,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000030517578}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0.000030518, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &86609968
@@ -567,7 +567,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000030517578}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &97605529
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Content: {fileID: 699265402}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -1557,8 +1557,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1955142760}
   m_HandleRect: {fileID: 1955142759}
   m_Direction: 0
-  m_Value: 0.0000013154129
-  m_Size: 0.8423913
+  m_Value: 0
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2105,7 +2105,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000030517578}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &409100195
@@ -3105,7 +3105,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000030517578}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &699265403
@@ -3498,7 +3498,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1947210732}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4356,7 +4356,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000030517578}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &974568994
@@ -5532,8 +5532,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1308778795}
   m_HandleRect: {fileID: 1308778794}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 0.38894227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6149,7 +6149,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 57.999756, y: 412.25}
+  m_AnchoredPosition: {x: 58.00049, y: 412.25}
   m_SizeDelta: {x: 116, y: 824.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305520979
@@ -6511,7 +6511,7 @@ MonoBehaviour:
   m_Content: {fileID: 974568993}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -6673,7 +6673,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 78091902}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7171,14 +7171,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440263467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810dd5fbf04b77942bbc0a93cdff1fdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 26a72f9b3b6704180978dbce08cf231e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paused: 0
-  pausedGUI: {fileID: 0}
-  gameName: Risk
+  Name: UI Layer
 --- !u!81 &1440263469
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7934,7 +7932,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 229396712}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8186,8 +8184,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1079203283}
   m_HandleRect: {fileID: 1079203282}
   m_Direction: 2
-  m_Value: 0.000000037013432
-  m_Size: 0.5271006
+  m_Value: 0
+  m_Size: 0.52079153
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8628,7 +8626,7 @@ MonoBehaviour:
   m_Content: {fileID: 409100194}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -9108,7 +9106,7 @@ MonoBehaviour:
   m_Content: {fileID: 97605528}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -9481,7 +9479,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 173934187}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9564,12 +9562,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dea4664acfb6ecc48a9178734aba20e9, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: dea4664acfb6ecc48a9178734aba20e9, type: 2}
       propertyPath: layers.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1440263468}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dea4664acfb6ecc48a9178734aba20e9, type: 2}
   m_IsPrefabParent: 0
@@ -10453,7 +10451,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091513720}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d49efd53907b42149a342aa0ce6e3d2, type: 3}
   m_Name: 

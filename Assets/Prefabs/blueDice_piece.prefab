@@ -14,9 +14,9 @@ GameObject:
   - 114: {fileID: 11452806}
   - 33: {fileID: 3351982}
   - 82: {fileID: 8281304}
-  - 114: {fileID: 11490258}
   - 54: {fileID: 5402902}
   - 65: {fileID: 6554340}
+  - 114: {fileID: 11472074}
   m_Layer: 8
   m_Name: blueDice_piece
   m_TagString: Dice
@@ -35,6 +35,9 @@ GameObject:
   - 33: {fileID: 3398446}
   - 23: {fileID: 2381418}
   - 95: {fileID: 9550914}
+  - 114: {fileID: 11449024}
+  - 114: {fileID: 11442564}
+  - 114: {fileID: 11469088}
   m_Layer: 0
   m_Name: dice6(Clone)
   m_TagString: Untagged
@@ -263,6 +266,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11442564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11442570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,6 +296,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 138c74c701b48e343b11e73533c91c9b, type: 3}
   - {fileID: 8300000, guid: 1c4b76ee531038a4ebc785a4c1ad6379, type: 3}
   - {fileID: 8300000, guid: 34307bc15f4ef434db4b91d6c559a1ae, type: 3}
+  myStoredColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &11449024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76709bcbe3e18469dbeac7f3b0ba7a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vertices: []
+  normals: []
+  uv: []
+  uv1: []
+  uv2: []
+  colors: []
+  tangents: []
+  subMeshCount: 0
 --- !u!114 &11452806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,7 +342,23 @@ MonoBehaviour:
   screenTransformThreshold: 0.1
   projection: 0
   projectionPlaneNormal: {x: 0, y: 0, z: 1}
---- !u!114 &11490258
+--- !u!114 &11469088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDeserializing: 0
+  _id: f1e7ae07-71bb-4510-9a1c-d77629df9b6f
+  classId: 4e3722a7-ac3d-451c-a22d-4b68c1b2e3bd
+  StoreAllComponents: 1
+  Components: []
+--- !u!114 &11472074
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -320,8 +370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDeserializing: 0
-  _id: 3ed1a60a-2f73-4661-ad09-a39672b54c32
-  classId: 8a873af8-587d-4aff-83e8-fbd6e8ff8c22
+  _id: 17a9676e-69e7-4751-959c-9e74e5626adf
+  classId: f16a8693-dc8b-4c9b-9888-8d3c968ef76b
   StoreAllComponents: 1
   Components: []
 --- !u!1001 &100100000
