@@ -2,7 +2,8 @@
 using System.Collections;
 
 public enum ObjectCreatorButtons {Player = 0, Dice, Cards, Common, Custom, LoadBG, BGMusic}
-public enum TypeOfPiece {dice6 = 0, playerCircle, sprite2d, card, cannon, deckCards_playing, deckCards_risk, circle, coneHalf, cross, diamond, hexagon, icosphere, pyramid, star, token, GUICoin, attackBot, cavalry, heart, meeple, pawn, soldier, dice6_red, dice6_blue}
+public enum TypeOfPiece {dice6 = 0, playerCircle, sprite2d, card, cannon, deckCards_playing, deckCards_risk, circle, coneHalf, cross, diamond, hexagon, icosphere, 
+	pyramid, star, token, GUICoin, attackBot, cavalry, heart, meeple, pawn, soldier, dice6_red, dice6_blue, RiskBoard0, RiskBoard1, RiskBoard2, RiskBoard3, RiskBoard4, RiskBoard5}
 public enum Location {onBoard = 0, inDrawer}
 
 
