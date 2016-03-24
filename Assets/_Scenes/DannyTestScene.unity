@@ -1557,8 +1557,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1955142760}
   m_HandleRect: {fileID: 1955142759}
   m_Direction: 0
-  m_Value: 0.00000026308257
-  m_Size: 0.8423913
+  m_Value: 0
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3498,7 +3498,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1947210732}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5112,7 +5112,6 @@ GameObject:
   - 114: {fileID: 1092344958}
   - 114: {fileID: 1092344957}
   - 114: {fileID: 1092344956}
-  - 114: {fileID: 1092344961}
   m_Layer: 0
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -5216,20 +5215,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1092344961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1092344955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810dd5fbf04b77942bbc0a93cdff1fdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: 0
-  pausedGUI: {fileID: 0}
-  gameName: Your Game
 --- !u!1 &1149054334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,8 +5532,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1308778795}
   m_HandleRect: {fileID: 1308778794}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.38894227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6164,7 +6149,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 58, y: 412.25}
+  m_AnchoredPosition: {x: 58.00049, y: 412.25}
   m_SizeDelta: {x: 116, y: 824.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305520979
@@ -6688,7 +6673,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 78091902}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7947,7 +7932,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 229396712}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8200,7 +8185,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1079203282}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.5271007
+  m_Size: 0.52079153
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9494,7 +9479,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 173934187}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.29519227
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9545,7 +9530,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: dea4664acfb6ecc48a9178734aba20e9, type: 2}
       propertyPath: layers.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: dea4664acfb6ecc48a9178734aba20e9, type: 2}
       propertyPath: m_LocalPosition.x
@@ -9582,7 +9567,7 @@ Prefab:
     - target: {fileID: 11400000, guid: dea4664acfb6ecc48a9178734aba20e9, type: 2}
       propertyPath: layers.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1440263468}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dea4664acfb6ecc48a9178734aba20e9, type: 2}
   m_IsPrefabParent: 0
