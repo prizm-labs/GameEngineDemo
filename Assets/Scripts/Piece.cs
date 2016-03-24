@@ -66,7 +66,7 @@ public class Piece : MonoBehaviour {
 					}
 				}
 				if (myType.ToString ().ToLower ().Contains ("dice") || myType.ToString().ToLower().Contains("cards")) {
-					Debug.Log ("this piece is either a dice or a card, and was recovered from when saving.  Going to destroy it and create a new one");
+					Debug.Log ("this piece is either a dice or a cardDeck, and was recovered from when saving.  Going to destroy it and create a new one");
 					NewPieceCreator.CreateNewPiece (myCategory, myType, transform.position);
 					Destroy (this.gameObject);
 				}
@@ -262,8 +262,7 @@ public class Piece : MonoBehaviour {
 
 		Debug.Log ("SETTTING MATERIAL TO: " + myMaterial.name);
 		if (myCategory == ObjectCreatorButtons.Dice) {
-			Debug.Log ("reloading material from dicematerialHolder");
-			ReloadDiceMaterials ();
+			Debug.Log ("not reloading dice material");
 			return;
 		}
 		
@@ -358,7 +357,7 @@ public class Piece : MonoBehaviour {
 		gameObject.tag = "Dice";
 	}
 
-
+	/*
 	private void ReloadDiceMaterials() {
 		Material theDiceMaterial = DiceMaterialHolder.Instance.blueDiceMaterial;
 		//theDiceMaterial.mainTexture = DiceMaterialHolder.Instance.blueDiceTexture;
@@ -369,6 +368,7 @@ public class Piece : MonoBehaviour {
 			tempMesh.sharedMaterial = theDiceMaterial;
 		}
 	}
+	*/
 
 	//adds double tap gesture to spawn a card of its category
 	private void ThisPieceIsADeckOfCards() {
@@ -395,7 +395,18 @@ public class Piece : MonoBehaviour {
 		GameObject theCardPrefab = myPotentialCardPrefabs[randomCardIndex];
 
 		GameObject newCard = Instantiate (theCardPrefab);
-		newCard.GetComponent<Card> ()._myDataPath = "Cards/deckCards_riskCards/risk_card_argentina";	//fix this
+		string theDataPath = "Cards/deckCards";
+
+		if (newCard.name.ToLower ().Contains ("risk")) {
+			theDataPath += "_riskCards/" + newCard.name;
+		} else {
+			theDataPath += "_playingCards/" + newCard.name;
+		}
+
+		Debug.Log("after drawing a random card, setting the card's data path to: " + theDataPath);
+
+
+		newCard.GetComponent<Card> ().GiveMeMyDataPath (theDataPath);
 
 		newCard.transform.position = transform.position + Vector3.up * 8;
 		if (newCard.name.ToLower ().Contains ("risk")) {

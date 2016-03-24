@@ -8,7 +8,7 @@ public class Card : MonoBehaviour {
 
 	public bool recoveringFromSave = false;
 	public string _myDataPath;
-	private string myDataPath {
+	public string myDataPath {
 		get { return _myDataPath; }
 		set {
 			Debug.Log ("someone tried to set myDataPath for CARD");
@@ -23,6 +23,7 @@ public class Card : MonoBehaviour {
 			}
 		}
 	}
+
 	void Awake() {
 		myTapGesture = GetComponent<TapGesture> ();
 		if (myTapGesture == null) {
@@ -33,7 +34,15 @@ public class Card : MonoBehaviour {
 	}
 
 	void ReloadThisCard() {
+		GameObject cardPrefab = Resources.Load (myDataPath, typeof(GameObject)) as GameObject;
+		GameObject replacementCard = Instantiate (cardPrefab);
+		//replacementCard.transform = this.transform;
+		Debug.Log("created replacementCard: " + replacementCard.name);
+		Destroy (this.gameObject);
+	}
 
+	public void GiveMeMyDataPath(string newDataPath) {
+		_myDataPath = newDataPath;
 	}
 
 	void OnEnable() {
