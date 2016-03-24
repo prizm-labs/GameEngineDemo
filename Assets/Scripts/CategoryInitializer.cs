@@ -43,14 +43,10 @@ public class CategoryInitializer : MonoBehaviour {
 	}
 
 	public void ReloadAllObjects() {
-		Debug.Log ("reloading all objects in CategoryPopulator");
-
 		cachedStorage.transform.DestroyChildren ();
 		numberOfCachedObjects = 0;
 
 		foreach (string category in System.Enum.GetNames(typeof(ObjectCreatorButtons))) {
-			Debug.Log ("trying to load resources from: " + category);
-
 			List<GameObject> MeshObjects;
 			MeshObjects = new List<GameObject>(Resources.LoadAll (category, typeof(GameObject)).Cast<GameObject>().ToArray());
 
@@ -96,8 +92,8 @@ public class CategoryInitializer : MonoBehaviour {
 
 					//Debug.Log ("added object:  " + meshObj.name + " to category: " + category + "with rendered texture: " + instancedRenderTexture.name + " which a type: " + instancedRenderTexture.ToString());
 				} catch (System.ArgumentException e) {
-					Debug.LogError (meshObjPrefab.name + " wasn't in the types enum, going to try to skip");
-					Debug.LogWarning (e);
+					//Debug.LogWarning (meshObjPrefab.name + " wasn't in the types enum, going to try to skip");
+					//Debug.LogWarning (e);
 				}
 			}
 		}

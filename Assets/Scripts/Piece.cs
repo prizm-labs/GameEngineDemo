@@ -22,7 +22,7 @@ public class Piece : MonoBehaviour {
 	}
 		
 
-	public static Color defaultNewPieceColor = Color.green;
+	public static Color defaultNewPieceColor = Color.white;
 
 	private ObjectCreatorButtons _myCategory;
 	public ObjectCreatorButtons myCategory {
@@ -52,44 +52,65 @@ public class Piece : MonoBehaviour {
 		get { return _myColor;}
 		set {
 			_myColor = value;
-			Debug.Log ("setting color of material to: " + _myColor.ToString());
-			//SetMeshesColors (_myColor);
+			Debug.Log ("setting color of " + gameObject.name + " to: " + _myColor.ToString());
+			Debug.Log ("ps, we are bootstrapped: " + bootstrapped.ToString ());
+
+			//this code runs if the piece was created by the save game manager (already was bootstrapped by DraMe)
+			if (bootstrapped) {
+				SetMeshesColorsDelay (_myColor);
+				if (GetComponent<TransformGesture> () == null) {
+					gameObject.AddComponent<TransformGesture> ();
+					if (GetComponent<ApplyTransform> () != null) {
+						gameObject.GetComponent<ApplyTransform> ().enabled = false;
+						gameObject.GetComponent<ApplyTransform> ().enabled = true;
+					}
+				}
+				if (myType.ToString ().ToLower ().Contains ("dice")) {
+					Debug.Log ("this piece contains a dice, and was recovered from when saving");
+					ThisPieceIsADice ();
+				}
+			}
 		}
 	}
 		
 
-	private bool twoDimensional = false;
-	private AudioSource audioSource;
-	private MeshFilter meshFilter;
-	private GameObject childMeshobject;
-	private Material myMaterial;
+	public bool twoDimensional = false;
+	public AudioSource audioSource;
+	public MeshFilter meshFilter;
+	public GameObject childMeshobject;
 
-	private bool bootstrapped = false;
+	private Material _myMaterial;
+	public Material myMaterial{
+		get { return _myMaterial; }
+		set 
+		{
+			Debug.Log ("an outside source tried f*cking with my material, going to reload it just incase");
+			if (bootstrapped) {
+				Debug.Log ("this thing was recovered from when saving, reloading its material");
+				ReloadMyMaterial ();
+			}
+		}
+
+	}
+
+	public bool bootstrapped = false;
 
 	public List<AudioClip> myAudioClips = new List<AudioClip>();
 
 	//used only if the piece is a deck of cards
-	private List<GameObject> myPotentialCardPrefabs;
+	public List<GameObject> myPotentialCardPrefabs;
 
 	public Color myStoredColor;
 
-	void Awake() {
+	void Awake(){
 		meshFilter = GetComponent<MeshFilter> ();
 		audioSource = GetComponent<AudioSource> ();
+		defaultNewPieceColor = CategoryInitializer.Instance.storeObjectColor;
 	}
 
 	void Start () {
 		gameObject.AddComponent<ApplyTransform> ();
 		myLocation = Location.onBoard;
-
-		/*
-		if (myStoredColor != null) {
-			SetMeshesColors (myStoredColor);
-		} else {
-			Debug.Log ("setting stored color to myColor");
-			myStoredColor = myColor;
-		}
-		*/
 	}
 
 
@@ -125,11 +146,17 @@ public class Piece : MonoBehaviour {
 			ThisPieceIsADeckOfCards ();
 		}
 		bootstrapped = true;
+
+		myStoredColor = myColor;
 		Debug.Log ("_Bootstrap() completed!");
+		//SetMeshesColorsDelay (Color.cyan);
 	}
 
 	private IEnumerator AddSaveGameComponents() {
-		
+
+		if (myCategory == ObjectCreatorButtons.Dice)
+			yield break;
+		gameObject.AddComponent<StoreInformation> ();
 		transform.GetChild (0).gameObject.AddComponent<StoreInformation> ();
 		if (transform.GetChild (0).gameObject.GetComponent<MeshRenderer> () != null) {	//if the child has a mesh renderer, we we need to store its material
 			transform.GetChild(0).gameObject.AddComponent<StoreMaterials>();
@@ -160,25 +187,35 @@ public class Piece : MonoBehaviour {
 
 		//correct the color on all of the meshes (dice should stay whatever color they are)
 		if (myCategory != ObjectCreatorButtons.Dice && myCategory != ObjectCreatorButtons.Cards) {
+			myColor = defaultNewPieceColor;
+
+			Material tempMaterial = new Material (Shader.Find ("Standard"));
+			Debug.Log ("made temp material, name is: " + tempMaterial.name);
+			tempMaterial.name = "instanceMaterial_" + childMeshobject.name;
+			tempMaterial.color = defaultNewPieceColor;
+			tempMaterial.shader = Shader.Find ("Standard");
+
+			_myMaterial = tempMaterial;
+		
 
 			if (childMeshobject.GetComponent<MeshRenderer> () != null) {
 				MeshRenderer tempMesh = childMeshobject.GetComponent<MeshRenderer> ();
-				tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
-				tempMesh.materials [0].name = "storeMaterial_" + childMeshobject.name;
-				tempMesh.materials [0].color = defaultNewPieceColor;		//set the unowned objects color to gray
-				tempMesh.materials[0].shader = Shader.Find("Standard");
+				Debug.Log ("trying to set material for main childmesh object to tempMaterial: " + tempMaterial.name);
+				tempMesh.sharedMaterial = tempMaterial;
+				Debug.Log ("did the material get set? : " + tempMesh.sharedMaterial.name);
 			}
 
-			for (int i = 0; i < transform.GetChild(0).childCount; i++) {
-				if (transform.GetChild(0).GetChild (i).gameObject.GetComponent<MeshRenderer> () != null) {
-					MeshRenderer tempMesh = transform.GetChild(0).GetChild (i).gameObject.GetComponent<MeshRenderer> ();
-					tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
-					tempMesh.materials [0].name = "fuck";
-					tempMesh.materials [0].color = defaultNewPieceColor;		//set the unowned objects color to gray
-					tempMesh.materials [0] = new Material (Shader.Find ("Standard"));
+			for (int i = 0; i < transform.GetChild (0).childCount; i++) {
+				if (transform.GetChild (0).GetChild (i).gameObject.GetComponent<MeshRenderer> () != null) {
+					MeshRenderer tempMesh = transform.GetChild (0).GetChild (i).gameObject.GetComponent<MeshRenderer> ();
+					tempMesh.sharedMaterial = tempMaterial;
 				}
 			}
+		} else if (transform.GetChild(0).gameObject.GetComponent<MeshRenderer>() != null) {
+			_myMaterial = transform.GetChild (0).gameObject.GetComponent<MeshRenderer> ().sharedMaterial;
 		}
+		if (myMaterial != null)
+			Debug.Log ("MY MATERIAL SET: " + myMaterial.name);
 
 		if (!twoDimensional) {
 			//dont have to set texture
@@ -191,7 +228,7 @@ public class Piece : MonoBehaviour {
 			for (int i = 0; i < transform.childCount; i++) {
 				if (transform.GetChild(i).gameObject.GetComponent<MeshRenderer>() != null) {
 					MeshRenderer tempMesh = transform.GetChild (i).gameObject.GetComponent<MeshRenderer> ();
-					tempMesh.material.mainTexture = tempTexture;
+					tempMesh.sharedMaterial.mainTexture = tempTexture;
 				}
 			}
 		}
@@ -211,20 +248,51 @@ public class Piece : MonoBehaviour {
 		yield return null;
 	}
 
+	void SetMeshesColorsDelay(Color newColor) {
+		StartCoroutine (WaitToSetMeshes (newColor));
+	}
+
+	IEnumerator WaitToSetMeshes(Color theColor) {
+		yield return new WaitForSeconds (0.1f);
+		SetMeshesColors (theColor);
+	}
+
+	private void ReloadMyMaterial() {
+		if (myMaterial == null)
+			return;
+
+		Debug.Log ("SETTTING MATERIAL TO: " + myMaterial.name);
+		if (myCategory == ObjectCreatorButtons.Dice) {
+			Debug.Log ("reloading material from dicematerialHolder");
+			ReloadDiceMaterials ();
+			return;
+		}
+		
+		if (childMeshobject.GetComponent<MeshRenderer> () != null) {
+			MeshRenderer tempMesh = childMeshobject.GetComponent<MeshRenderer> ();
+			tempMesh.sharedMaterial = myMaterial;
+		}
+
+		for (int i = 0; i < transform.GetChild (0).childCount; i++) {
+			if (transform.GetChild (0).GetChild (i).gameObject.GetComponent<MeshRenderer> () != null) {
+				MeshRenderer tempMesh = transform.GetChild (0).GetChild (i).gameObject.GetComponent<MeshRenderer> ();
+				tempMesh.sharedMaterial = myMaterial;
+			}
+		}
+	}
 	void SetMeshesColors(Color newColor) {
 		Debug.Log ("setting all the meshes colors to: " + newColor.ToString ());
 
 		//correct the color on all of the meshes
 
-		if (gameObject.GetComponent<MeshRenderer> () != null) {
-			gameObject.GetComponent<MeshRenderer> ().material.color = newColor;
+		if (transform.GetChild(0).gameObject.GetComponent<MeshRenderer> () != null) {
+			transform.GetChild(0).gameObject.GetComponent<MeshRenderer> ().sharedMaterial.color = newColor;
 		}
 
-		for (int i = 0; i < transform.childCount; i++) {
-			if (transform.GetChild(i).gameObject.GetComponent<MeshRenderer>() != null) {
-				MeshRenderer tempMesh = transform.GetChild (i).gameObject.GetComponent<MeshRenderer> ();
-				//tempMesh.material = new Material (Shader.Find ("Standard"));
-				tempMesh.material.color = newColor;		//set the unowned objects color to gray
+		for (int i = 0; i < transform.GetChild(0).childCount; i++) {
+			if (transform.GetChild(0).GetChild(i).gameObject.GetComponent<MeshRenderer>() != null) {
+				MeshRenderer tempMesh = transform.GetChild(0).GetChild (i).gameObject.GetComponent<MeshRenderer> ();
+				tempMesh.sharedMaterial.color = newColor;		//set the unowned objects color to gray
 			}
 		}
 	}
@@ -269,7 +337,7 @@ public class Piece : MonoBehaviour {
 
 	//adds flick gesture, rigidbody, limits dragging to 2 finger drags
 	public void ThisPieceIsADice() {
-		myColor = Color.white;
+		_myColor = Color.white;
 		GetComponent<TransformGesture> ().MinTouches = 2;
 
 		gameObject.AddComponent<FlickGesture> ();
@@ -277,9 +345,9 @@ public class Piece : MonoBehaviour {
 
 		if (gameObject.GetComponent<Rigidbody>() == null)
 			gameObject.AddComponent<Rigidbody> ();
-		GetComponent<Rigidbody> ().mass = 0.5f;
-		GetComponent<Rigidbody>().
-		GetComponent<Rigidbody> ().angularDrag = 0.8f;
+		GetComponent<Rigidbody> ().mass = 0.08f;
+		GetComponent<Rigidbody> ().drag = 0.1f;
+		GetComponent<Rigidbody> ().angularDrag = 0.01f;
 
 		if (gameObject.GetComponent<BoxCollider>() == null)
 			gameObject.AddComponent<BoxCollider> ();
@@ -288,6 +356,18 @@ public class Piece : MonoBehaviour {
 		gameObject.layer = 8;	//Dice Layer
 
 		gameObject.tag = "Dice";
+	}
+
+
+	private void ReloadDiceMaterials() {
+		Material theDiceMaterial = DiceMaterialHolder.Instance.blueDiceMaterial;
+		//theDiceMaterial.mainTexture = DiceMaterialHolder.Instance.blueDiceTexture;
+		//theDiceMaterial.shader.
+
+		if (childMeshobject.GetComponent<MeshRenderer> () != null) {
+			MeshRenderer tempMesh = childMeshobject.GetComponent<MeshRenderer> ();
+			tempMesh.sharedMaterial = theDiceMaterial;
+		}
 	}
 
 	//adds double tap gesture to spawn a card of its category

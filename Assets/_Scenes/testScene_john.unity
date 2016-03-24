@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e20db851330cc44ab42e9d0f7adbb8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storeObjectColor: {r: 0, g: 0.8014706, b: 0.17134883, a: 1}
+  storeObjectColor: {r: 0.0061635002, g: 0.83823526, b: 0.21848513, a: 0}
 --- !u!1 &164196975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3175,7 +3175,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 57.999756, y: 412.25}
+  m_AnchoredPosition: {x: 58.000244, y: 412.25}
   m_SizeDelta: {x: 116, y: 824.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747564875
@@ -6213,8 +6213,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1679048150}
   m_HandleRect: {fileID: 1679048149}
   m_Direction: 2
-  m_Value: 0.000000037013432
-  m_Size: 0.5271006
+  m_Value: 0
+  m_Size: 0.5271007
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6374,6 +6374,49 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1373039056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1373039058}
+  - 114: {fileID: 1373039057}
+  m_Layer: 0
+  m_Name: DiceHackWorkAround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1373039057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1373039056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfeb03e8d311bd48aaceea5fad5d62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteDiceMaterial: {fileID: 2100000, guid: 9168a40bdce060f40b99da973f438204, type: 2}
+  redDiceMaterial: {fileID: 2100000, guid: cfb31753db4a6cb4ea8f681f05beee48, type: 2}
+  blueDiceMaterial: {fileID: 2100000, guid: 97a709909003570438796c0207764674, type: 2}
+  blueDiceTexture: {fileID: 2800000, guid: 57e3847916d4df046aa43ebb436ac216, type: 3}
+--- !u!4 &1373039058
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1373039056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 85.05817, y: -12.499992, z: 25.705292}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1377419427
 GameObject:
   m_ObjectHideFlags: 0
@@ -7614,7 +7657,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 310658880}
   m_HandleRect: {fileID: 310658879}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -9516,7 +9559,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 809378918}
   m_HandleRect: {fileID: 809378917}
   m_Direction: 0
-  m_Value: 0.0000013154129
+  m_Value: 0
   m_Size: 0.8423913
   m_NumberOfSteps: 0
   m_OnValueChanged:
