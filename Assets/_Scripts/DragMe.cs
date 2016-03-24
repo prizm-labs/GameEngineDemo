@@ -73,21 +73,15 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		if (m_DraggingIcon != null)
 			Destroy(m_DraggingIcon);
 
-		Vector3 location = Camera.main.ScreenToWorldPoint(new Vector3 (eventData.position.x, eventData.position.y, GameManager.DistanceFromCamera));
-
-
-		numberToInstantiate = Mathf.RoundToInt(transform.parent.parent.parent.parent.Find ("QuantitySlider").GetComponent<Slider> ().value);
-		Debug.Log ("released, instantiating new object, quantity: " + numberToInstantiate.ToString());
-
-		for (int i = 0; i < numberToInstantiate; i++) {
-			NewPieceCreator.CreateNewPiece (buttonName, typeToInstantiate, location);
-			/*
-			GameObject newPiece = Instantiate (Resources.Load ("Piece", typeof(GameObject))) as GameObject;
-			newPiece.GetComponent<Piece> ().myCategory = buttonName;
-			newPiece.GetComponent<Piece> ().myType = typeToInstantiate;
-			newPiece.GetComponent<Piece> ().Bootstrap ();
-			newPiece.transform.position = location;
-			*/
+		if (buttonName == ObjectCreatorButtons.LoadBG) {
+			Material boardMaterial = Resources.Load ("LoadBG/" + typeToInstantiate.ToString (), typeof(Material)) as Material;
+			GameObject.Find ("Floor").GetComponent<MeshRenderer> ().sharedMaterial = boardMaterial;
+		} else {
+			Vector3 location = Camera.main.ScreenToWorldPoint (new Vector3 (eventData.position.x, eventData.position.y, GameManager.DistanceFromCamera));
+			numberToInstantiate = Mathf.RoundToInt (transform.parent.parent.parent.parent.Find ("QuantitySlider").GetComponent<Slider> ().value);
+			for (int i = 0; i < numberToInstantiate; i++) {
+				NewPieceCreator.CreateNewPiece (buttonName, typeToInstantiate, location);
+			}
 		}
 	}
 
