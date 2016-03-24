@@ -61,13 +61,14 @@ public class Piece : MonoBehaviour {
 				if (GetComponent<TransformGesture> () == null) {
 					gameObject.AddComponent<TransformGesture> ();
 					if (GetComponent<ApplyTransform> () != null) {
-						gameObject.GetComponent<ApplyTransform> ().enabled = false;
-						gameObject.GetComponent<ApplyTransform> ().enabled = true;
+						gameObject.GetComponent<ApplyTransform> ().ReloadApplyTransform ();
+
 					}
 				}
-				if (myType.ToString ().ToLower ().Contains ("dice")) {
-					Debug.Log ("this piece contains a dice, and was recovered from when saving");
-					ThisPieceIsADice ();
+				if (myType.ToString ().ToLower ().Contains ("dice") || myType.ToString().ToLower().Contains("cards")) {
+					Debug.Log ("this piece is either a dice or a card, and was recovered from when saving.  Going to destroy it and create a new one");
+					NewPieceCreator.CreateNewPiece (myCategory, myType, transform.position);
+					Destroy (this.gameObject);
 				}
 			}
 		}
@@ -153,9 +154,7 @@ public class Piece : MonoBehaviour {
 	}
 
 	private IEnumerator AddSaveGameComponents() {
-
-		if (myCategory == ObjectCreatorButtons.Dice)
-			yield break;
+		
 		gameObject.AddComponent<StoreInformation> ();
 		transform.GetChild (0).gameObject.AddComponent<StoreInformation> ();
 		if (transform.GetChild (0).gameObject.GetComponent<MeshRenderer> () != null) {	//if the child has a mesh renderer, we we need to store its material
@@ -253,7 +252,7 @@ public class Piece : MonoBehaviour {
 	}
 
 	IEnumerator WaitToSetMeshes(Color theColor) {
-		yield return new WaitForSeconds (0.1f);
+		yield return new WaitForSeconds (0.2f);
 		SetMeshesColors (theColor);
 	}
 
@@ -284,6 +283,7 @@ public class Piece : MonoBehaviour {
 		Debug.Log ("setting all the meshes colors to: " + newColor.ToString ());
 
 		//correct the color on all of the meshes
+		if (transform.childCount == 0) return;
 
 		if (transform.GetChild(0).gameObject.GetComponent<MeshRenderer> () != null) {
 			transform.GetChild(0).gameObject.GetComponent<MeshRenderer> ().sharedMaterial.color = newColor;
@@ -392,8 +392,11 @@ public class Piece : MonoBehaviour {
 
 	private void DrawRandomCardFromDeck() {
 		int randomCardIndex = UnityEngine.Random.Range (0, myPotentialCardPrefabs.Count - 1);
+		GameObject theCardPrefab = myPotentialCardPrefabs[randomCardIndex];
 
-		GameObject newCard = Instantiate (myPotentialCardPrefabs [randomCardIndex]);
+		GameObject newCard = Instantiate (theCardPrefab);
+		newCard.GetComponent<Card> ()._myDataPath = "Cards/deckCards_riskCards/risk_card_argentina";	//fix this
+
 		newCard.transform.position = transform.position + Vector3.up * 8;
 		if (newCard.name.ToLower ().Contains ("risk")) {
 			newCard.transform.localScale = Vector3.one * 10.0f;

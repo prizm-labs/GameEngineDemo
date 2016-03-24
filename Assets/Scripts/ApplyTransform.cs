@@ -35,9 +35,20 @@ public class ApplyTransform : MonoBehaviour {
 		//myReleaseGesture.Released += MyReleaseGesture_Released;
 		maxScaling = transform.localScale * 2.5f;
 		minScaling = transform.localScale * 0.75f;
-		Debug.Log ("min scaling set: " + minScaling.ToString ());
 	}
-	
+
+	public void ReloadApplyTransform() {
+		myTransformGesture = GetComponent<TransformGesture> ();
+		myPressGesture = GetComponent<PressGesture> ();
+		if (myTransformGesture != null)
+			myTransformGesture.Transformed += MyTransformGesture_Transformed;
+		//myPressGesture.Pressed += MyPressGesture_Pressed;
+		//myReleaseGesture.Released += MyReleaseGesture_Released;
+		maxScaling = transform.localScale * 2.5f;
+		minScaling = transform.localScale * 0.75f;
+		Debug.Log ("ApplyTransform Reloaded");
+	}
+
 	void OnDisable() {
 		if (myTransformGesture != null)
 			myTransformGesture.Transformed -= MyTransformGesture_Transformed;

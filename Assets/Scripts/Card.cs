@@ -6,7 +6,23 @@ public class Card : MonoBehaviour {
 
 	private TapGesture myTapGesture;
 
-
+	public bool recoveringFromSave = false;
+	public string _myDataPath;
+	private string myDataPath {
+		get { return _myDataPath; }
+		set {
+			Debug.Log ("someone tried to set myDataPath for CARD");
+			_myDataPath = value;
+			if (!recoveringFromSave) {
+				recoveringFromSave = true;
+				_myDataPath = value;
+				Debug.Log ("_myDataPath set: " + _myDataPath);
+			} else {
+				Debug.Log ("recovering this card from save: " + gameObject.name);
+				ReloadThisCard ();
+			}
+		}
+	}
 	void Awake() {
 		myTapGesture = GetComponent<TapGesture> ();
 		if (myTapGesture == null) {
@@ -14,6 +30,10 @@ public class Card : MonoBehaviour {
 		}
 
 		myTapGesture.NumberOfTapsRequired = 2;	//double tap will turn it over
+	}
+
+	void ReloadThisCard() {
+
 	}
 
 	void OnEnable() {

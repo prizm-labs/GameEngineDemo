@@ -80,11 +80,14 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		Debug.Log ("released, instantiating new object, quantity: " + numberToInstantiate.ToString());
 
 		for (int i = 0; i < numberToInstantiate; i++) {
+			NewPieceCreator.CreateNewPiece (buttonName, typeToInstantiate, location);
+			/*
 			GameObject newPiece = Instantiate (Resources.Load ("Piece", typeof(GameObject))) as GameObject;
 			newPiece.GetComponent<Piece> ().myCategory = buttonName;
 			newPiece.GetComponent<Piece> ().myType = typeToInstantiate;
 			newPiece.GetComponent<Piece> ().Bootstrap ();
 			newPiece.transform.position = location;
+			*/
 		}
 	}
 
