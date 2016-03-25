@@ -177,6 +177,7 @@ public class Piece : MonoBehaviour {
 			NewPieceCreator.RegisterObjectColors (this.gameObject);
 		}
 
+		GetComponent<TransformGesture> ().Type = (TouchScript.Gestures.Base.TransformGestureBase.TransformType) 0x3;
 		bootstrapped = true;
 
 		myStoredColor = myColor;
@@ -184,7 +185,7 @@ public class Piece : MonoBehaviour {
 	}
 
 	private IEnumerator AddSaveGameComponents() {
-		
+		Debug.Log ("adding save game components");
 		gameObject.AddComponent<StoreInformation> ();
 		transform.GetChild (0).gameObject.AddComponent<StoreInformation> ();
 		if (transform.GetChild (0).gameObject.GetComponent<MeshRenderer> () != null) {	//if the child has a mesh renderer, we we need to store its material
@@ -387,8 +388,6 @@ public class Piece : MonoBehaviour {
 		_myColor = Color.white;
 		GetComponent<TransformGesture> ().MinTouches = 2;
 
-		GetComponent<TransformGesture> ().Type = (TouchScript.Gestures.Base.TransformGestureBase.TransformType) 0x3;
-
 		gameObject.AddComponent<FlickGesture> ();
 		GetComponent<FlickGesture>().Flicked += DiceFlick;
 
@@ -423,6 +422,8 @@ public class Piece : MonoBehaviour {
 	}
 
 	private void ThisPieceIsAPlayer() {
+
+
 
 		if (gameObject.GetComponent<Rigidbody>() == null)
 			gameObject.AddComponent<Rigidbody> ();

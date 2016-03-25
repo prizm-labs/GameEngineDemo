@@ -14,7 +14,15 @@ public class SoundManager : MonoBehaviour {
 	[System.NonSerialized]
 	public float globalSFXVolume = 1.0f;
 	[System.NonSerialized]
-	public float BGMVolume = 1.0f;
+	private float _BGMVolume = 1.0f;
+	public float BGMVolume {
+		get { return _BGMVolume; }
+		set {
+			_BGMVolume = value;
+			BGMPlayer.volume = _BGMVolume;
+		}
+	}
+
 	[System.NonSerialized]
 	public List<AudioClip> backgroundMusicClips = new List<AudioClip>();
 
@@ -104,10 +112,10 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void ChangeVolume_BG(float value) {
-		BGMVolume = Mathf.RoundToInt (value);
+		BGMVolume = value / 100.0f;
 	}
 
 	public void ChangeVolume_SFX(float value) {
-		globalSFXVolume = Mathf.RoundToInt (value);
+		globalSFXVolume = value / 100.0f;
 	}
 }
