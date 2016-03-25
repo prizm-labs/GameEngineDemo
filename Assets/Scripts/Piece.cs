@@ -15,8 +15,6 @@ public class Piece : MonoBehaviour {
 			_myType = value; 
 			if (_myType == TypeOfPiece.sprite2d) {
 				meshFilter.mesh = Helper.GetQuadMesh ();
-			} else if (_myType == TypeOfPiece.playerCircle) {
-				gameObject.AddComponent<Player> ();
 			} 
 		}
 	}
@@ -44,14 +42,12 @@ public class Piece : MonoBehaviour {
 		}
 	}
 
-	private Color _myColor;
-	public Color myColor {
-		get { return _myColor;}
+	private bool _SerializationChecker;
+	public bool SerializationChecker {
+		get { return _SerializationChecker; }
 		set {
-			_myColor = value;
 			//this code runs if the piece was created by the save game manager (already was bootstrapped by DraMe)
 			if (bootstrapped) {
-				SetMeshesColorsDelay (_myColor);
 				if (GetComponent<TransformGesture> () == null) {
 					gameObject.AddComponent<TransformGesture> ();
 					if (GetComponent<ApplyTransform> () != null) {
@@ -59,10 +55,22 @@ public class Piece : MonoBehaviour {
 
 					}
 				}
+
 				if (myType.ToString ().ToLower ().Contains ("dice") || myType.ToString().ToLower().Contains("cards")) {
 					Debug.Log ("this piece is either a dice or a cardDeck, and was recovered from when saving.  Going to destroy it and create a new one");
 					StartCoroutine (CreateNewPieceDelayed ());
 				}
+			}
+		}
+	}
+	private Color _myColor;
+	public Color myColor {
+		get { return _myColor;}
+		set {
+			_myColor = value;
+
+			if (bootstrapped) {
+				SetMeshesColors (_myColor);
 			}
 		}
 	}
@@ -109,8 +117,12 @@ public class Piece : MonoBehaviour {
 
 	void Start () {
 		gameObject.AddComponent<ApplyTransform> ();
-		gameObject.AddComponent<PressGesture> ();
-		gameObject.GetComponent<PressGesture>().Pressed += OnPressed;
+
+		if (myCategory != ObjectCreatorButtons.Player) {
+			gameObject.AddComponent<PressGesture> ();
+			gameObject.GetComponent<PressGesture> ().Pressed += OnPressed;
+		}
+
 		myLocation = Location.onBoard;
 	}
 
@@ -141,13 +153,17 @@ public class Piece : MonoBehaviour {
 	private IEnumerator _Bootstrap() {
 		yield return StartCoroutine (LoadMesh ());
 		yield return StartCoroutine (LoadAudio ());
-		yield return StartCoroutine (AddSaveGameComponents ());
+
+		if (myType != TypeOfPiece.playerCircle)
+			yield return StartCoroutine (AddSaveGameComponents ());
 
 		if (myCategory == ObjectCreatorButtons.Dice) {
 			ThisPieceIsADice ();
 		} else if (myCategory == ObjectCreatorButtons.Cards) {
 			ThisPieceIsADeckOfCards ();
-		}
+		} else if (myCategory == ObjectCreatorButtons.Player) {
+			ThisPieceIsAPlayer ();
+		} 
 
 		bootstrapped = true;
 
@@ -299,21 +315,19 @@ public class Piece : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("triggered with: " + other.name);
-		if (other.tag == "player") {
+		if (other.tag == "Player") {
 			Debug.Log ("triggered with player, setting our color to their color");
 			Player myNewOwner = other.gameObject.GetComponent<Player> ();
 			myColor = myNewOwner.myColor;
-			if (!myNewOwner.myOwnedPieces.Contains (this)) {
-				myNewOwner.myOwnedPieces.Add (this);
-			}
-		} else if (other.tag == "drawer") {
+			myNewOwner.CollidedWithAPiece (this);
+		} else if (other.tag == "Drawer") {
 			transform.SetParent (other.transform, false);
 			myLocation = Location.inDrawer;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
-		if (other.tag == "drawer") {
+		if (other.tag == "Drawer") {
 			//when the piece leaves the drawer, put its location back to onboard
 			transform.SetParent(null);
 			myLocation = Location.onBoard;
@@ -327,7 +341,7 @@ public class Piece : MonoBehaviour {
 
 	public void PlayASound() {
 		if (myAudioClips.Count == 0) {
-			Debug.LogError ("we have no audioClips for: " + name);
+			Debug.LogError ("we have no audioClips for: " + transform.GetChild(0).name);
 			return;
 		}
 		audioSource.volume = SoundManager.Instance.globalSFXVolume;
@@ -359,19 +373,6 @@ public class Piece : MonoBehaviour {
 		gameObject.tag = "Dice";
 	}
 
-	/*
-	private void ReloadDiceMaterials() {
-		Material theDiceMaterial = DiceMaterialHolder.Instance.blueDiceMaterial;
-		//theDiceMaterial.mainTexture = DiceMaterialHolder.Instance.blueDiceTexture;
-		//theDiceMaterial.shader.
-
-		if (childMeshobject.GetComponent<MeshRenderer> () != null) {
-			MeshRenderer tempMesh = childMeshobject.GetComponent<MeshRenderer> ();
-			tempMesh.sharedMaterial = theDiceMaterial;
-		}
-	}
-	*/
-
 	//adds double tap gesture to spawn a card of its category
 	private void ThisPieceIsADeckOfCards() {
 		myPotentialCardPrefabs = new List<GameObject>(Resources.LoadAll (myCategory.ToString() + "/" + myType.ToString () + "Cards", typeof(GameObject)).Cast<GameObject>().ToArray());
@@ -385,6 +386,22 @@ public class Piece : MonoBehaviour {
 		//if (gameObject.GetComponent<BoxCollider>() == null)
 		//	gameObject.AddComponent<BoxCollider> ();
 		//gameObject.GetComponent<BoxCollider> ().size = new Vector3 (5.0f, 5.0f, 5.0f);S
+	}
+
+	private void ThisPieceIsAPlayer() {
+
+		if (gameObject.GetComponent<Rigidbody>() == null)
+			gameObject.AddComponent<Rigidbody> ();
+		//GetComponent<Rigidbody> ().mass = 0.08f;
+		GetComponent<Rigidbody> ().useGravity = false;
+		GetComponent<Rigidbody> ().isKinematic = true;
+
+		GetComponent<BoxCollider> ().size = new Vector3 (30f, 100f, 20f);
+		GetComponent<BoxCollider> ().center = new Vector3 (-5f, 0f, 2.5f);
+		gameObject.AddComponent<Player> ();
+		GetComponent<Player> ().SetMyNameVisually (NewPieceCreator.numplayers++);
+		GetComponent<Player> ().myColor = new Color (UnityEngine.Random.Range (0.0f, 1.0f), UnityEngine.Random.Range (0.0f, 1.0f), UnityEngine.Random.Range (0.0f, 1.0f));
+		this.gameObject.tag = "Player";
 	}
 
 	void DeckTapped (object sender, EventArgs e)
