@@ -8,6 +8,7 @@ using System;
 [System.Serializable]
 public class Piece : MonoBehaviour {
 
+	[SerializeField]
 	private TypeOfPiece _myType;
 	public TypeOfPiece myType {
 		get { return _myType; }
@@ -19,7 +20,7 @@ public class Piece : MonoBehaviour {
 			} 
 		}
 	}
-		
+	[SerializeField]
 	private Player _myNewOwner;
 	public Player myNewOwner {
 		get { return _myNewOwner; }
@@ -27,8 +28,10 @@ public class Piece : MonoBehaviour {
 			_myNewOwner = value;
 		}
 	}
+
 	public static Color defaultNewPieceColor = Color.white;
 
+	[SerializeField]
 	private ObjectCreatorButtons _myCategory;
 	public ObjectCreatorButtons myCategory {
 		get { return _myCategory; }
@@ -39,16 +42,7 @@ public class Piece : MonoBehaviour {
 		}
 	}
 
-		
-	private Location _myLocation;
-	public Location myLocation {
-		get { return _myLocation; }
-		set 
-		{
-			_myLocation = value; 
-		}
-	}
-
+	[SerializeField]
 	private bool _SerializationChecker;
 	public bool SerializationChecker {
 		get { return _SerializationChecker; }
@@ -70,6 +64,7 @@ public class Piece : MonoBehaviour {
 			}
 		}
 	}
+	[SerializeField]
 	private Color _myColor;
 	public Color myColor {
 		get { return _myColor;}
@@ -92,10 +87,14 @@ public class Piece : MonoBehaviour {
 		
 
 	public bool twoDimensional = false;
+	[SerializeField]
 	public AudioSource audioSource;
+	[SerializeField]
 	public MeshFilter meshFilter;
+	[SerializeField]
 	public GameObject childMeshobject;
 
+	[SerializeField]
 	private Material _myMaterial;
 	public Material myMaterial{
 		get { return _myMaterial; }
@@ -109,14 +108,16 @@ public class Piece : MonoBehaviour {
 			}
 		}
 	}
-
+	[SerializeField]
 	public bool bootstrapped = false;
-
+	[SerializeField]
 	public List<AudioClip> myAudioClips = new List<AudioClip>();
 
 	//used only if the piece is a deck of cards
+	[SerializeField]
 	public List<GameObject> myPotentialCardPrefabs;
 
+	[SerializeField]
 	public Color myStoredColor;
 
 	void Awake(){
@@ -133,7 +134,6 @@ public class Piece : MonoBehaviour {
 			gameObject.GetComponent<PressGesture> ().Pressed += OnPressed;
 		}
 
-		myLocation = Location.onBoard;
 	}
 
 
@@ -174,7 +174,7 @@ public class Piece : MonoBehaviour {
 		} else if (myCategory == ObjectCreatorButtons.Player) {
 			ThisPieceIsAPlayer ();
 		} else {
-			NewPieceCreator.RegisterObjectMaterials (this.gameObject);
+			NewPieceCreator.RegisterObjectColors (this.gameObject);
 		}
 
 		bootstrapped = true;
@@ -306,7 +306,7 @@ public class Piece : MonoBehaviour {
 	}
 
 	private void ReloadMyMaterial() {
-		myMaterial = NewPieceCreator.RetrieveObjectMaterial (this.gameObject);
+		//Color tempColor = NewPieceCreator.RetrieveObjectColor (this.gameObject);
 
 		if (myMaterial == null)
 			return;
@@ -330,6 +330,8 @@ public class Piece : MonoBehaviour {
 				tempMesh.sharedMaterial = myMaterial;
 			}
 		}
+
+		//SetMeshesColors (tempColor);
 	}
 
 	void SetMeshesColors(Color newColor) {
@@ -361,17 +363,6 @@ public class Piece : MonoBehaviour {
 			Player theOtherPlayer = other.gameObject.GetComponent<Player> ();
 
 			theOtherPlayer.CollidedWithAPiece (this);
-		} else if (other.tag == "Drawer") {
-			transform.SetParent (other.transform, false);
-			myLocation = Location.inDrawer;
-		}
-	}
-
-	void OnTriggerExit(Collider other) {
-		if (other.tag == "Drawer") {
-			//when the piece leaves the drawer, put its location back to onboard
-			transform.SetParent(null);
-			myLocation = Location.onBoard;
 		}
 	}
 
