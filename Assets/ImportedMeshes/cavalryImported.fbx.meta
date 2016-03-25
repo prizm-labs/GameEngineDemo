@@ -1,52 +1,23 @@
 fileFormatVersion: 2
-guid: 81f7a39bf92ba1340b39cd709ff5ff1e
-timeCreated: 1458155562
+guid: 8772dc0e1be7b084288d420cf8797a2d
+timeCreated: 1458938733
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: TaigaStrider28mm.001_MeshPart0
-    100004: TaigaStrider28mm.001_MeshPart1
-    100006: TaigaStrider28mm.001_MeshPart2
-    100008: TaigaStrider28mm.001_MeshPart3
-    100010: TaigaStrider28mm.001_MeshPart4
-    100012: TaigaStrider28mm.001_MeshPart5
-    100014: TaigaStrider28mm.001_MeshPart6
-    100016: TaigaStrider28mm.001_MeshPart7
-    400000: //RootNode
-    400002: TaigaStrider28mm.001_MeshPart0
-    400004: TaigaStrider28mm.001_MeshPart1
-    400006: TaigaStrider28mm.001_MeshPart2
-    400008: TaigaStrider28mm.001_MeshPart3
-    400010: TaigaStrider28mm.001_MeshPart4
-    400012: TaigaStrider28mm.001_MeshPart5
-    400014: TaigaStrider28mm.001_MeshPart6
-    400016: TaigaStrider28mm.001_MeshPart7
-    2300000: TaigaStrider28mm.001_MeshPart0
-    2300002: TaigaStrider28mm.001_MeshPart1
-    2300004: TaigaStrider28mm.001_MeshPart2
-    2300006: TaigaStrider28mm.001_MeshPart3
-    2300008: TaigaStrider28mm.001_MeshPart4
-    2300010: TaigaStrider28mm.001_MeshPart5
-    2300012: TaigaStrider28mm.001_MeshPart6
-    2300014: TaigaStrider28mm.001_MeshPart7
-    3300000: TaigaStrider28mm.001_MeshPart0
-    3300002: TaigaStrider28mm.001_MeshPart1
-    3300004: TaigaStrider28mm.001_MeshPart2
-    3300006: TaigaStrider28mm.001_MeshPart3
-    3300008: TaigaStrider28mm.001_MeshPart4
-    3300010: TaigaStrider28mm.001_MeshPart5
-    3300012: TaigaStrider28mm.001_MeshPart6
-    3300014: TaigaStrider28mm.001_MeshPart7
-    4300000: TaigaStrider28mm.001_MeshPart0
-    4300002: TaigaStrider28mm.001_MeshPart1
-    4300004: TaigaStrider28mm.001_MeshPart2
-    4300006: TaigaStrider28mm.001_MeshPart3
-    4300008: TaigaStrider28mm.001_MeshPart4
-    4300010: TaigaStrider28mm.001_MeshPart5
-    4300012: TaigaStrider28mm.001_MeshPart6
-    4300014: TaigaStrider28mm.001_MeshPart7
+    100000: Camera
+    100002: //RootNode
+    100004: knight
+    100006: Lamp
+    400000: Camera
+    400002: //RootNode
+    400004: knight
+    400006: Lamp
+    2300000: knight
+    3300000: knight
+    4300000: knight
+    7400000: knight|knight|knight|walk|knight|walk
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -105,7 +76,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -1,72 +1,21 @@
 fileFormatVersion: 2
-guid: 61d95d1599c28e94390678a762a9f09b
-timeCreated: 1458612526
+guid: 8e715aa2eba0b7d4d979f0deafca7344
+timeCreated: 1458940721
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Camera
-    100002: group_0
-    100004: group_0.001
-    100006: Lamp
-    100008: Last Saved SketchUp View
-    100010: SketchUp
-    100012: //RootNode
-    100014: WWI soldier Laser Fine scan
-    100016: WWI soldier Laser Fine scan_MeshPart0
-    100018: WWI soldier Laser Fine scan_MeshPart1
-    100020: WWI soldier Laser Fine scan_MeshPart2
-    100022: WWI soldier Laser Fine scan_MeshPart3
-    100024: WWI soldier Laser Fine scan_MeshPart4
-    100026: WWI soldier Laser Fine scan_MeshPart5
-    100028: WWI soldier Laser Fine scan_MeshPart6
-    100030: WWI soldier Laser Fine scan_MeshPart7
+    100002: Lamp
+    100004: objBAYO
+    100006: //RootNode
     400000: Camera
-    400002: group_0
-    400004: group_0.001
-    400006: Lamp
-    400008: Last Saved SketchUp View
-    400010: SketchUp
-    400012: //RootNode
-    400014: WWI soldier Laser Fine scan
-    400016: WWI soldier Laser Fine scan_MeshPart0
-    400018: WWI soldier Laser Fine scan_MeshPart1
-    400020: WWI soldier Laser Fine scan_MeshPart2
-    400022: WWI soldier Laser Fine scan_MeshPart3
-    400024: WWI soldier Laser Fine scan_MeshPart4
-    400026: WWI soldier Laser Fine scan_MeshPart5
-    400028: WWI soldier Laser Fine scan_MeshPart6
-    400030: WWI soldier Laser Fine scan_MeshPart7
-    2300000: group_0
-    2300002: group_0.001
-    2300004: WWI soldier Laser Fine scan_MeshPart0
-    2300006: WWI soldier Laser Fine scan_MeshPart1
-    2300008: WWI soldier Laser Fine scan_MeshPart2
-    2300010: WWI soldier Laser Fine scan_MeshPart3
-    2300012: WWI soldier Laser Fine scan_MeshPart4
-    2300014: WWI soldier Laser Fine scan_MeshPart5
-    2300016: WWI soldier Laser Fine scan_MeshPart6
-    2300018: WWI soldier Laser Fine scan_MeshPart7
-    3300000: group_0
-    3300002: group_0.001
-    3300004: WWI soldier Laser Fine scan_MeshPart0
-    3300006: WWI soldier Laser Fine scan_MeshPart1
-    3300008: WWI soldier Laser Fine scan_MeshPart2
-    3300010: WWI soldier Laser Fine scan_MeshPart3
-    3300012: WWI soldier Laser Fine scan_MeshPart4
-    3300014: WWI soldier Laser Fine scan_MeshPart5
-    3300016: WWI soldier Laser Fine scan_MeshPart6
-    3300018: WWI soldier Laser Fine scan_MeshPart7
-    4300000: WWI soldier Laser Fine scan_MeshPart0
-    4300002: WWI soldier Laser Fine scan_MeshPart1
-    4300004: WWI soldier Laser Fine scan_MeshPart2
-    4300006: WWI soldier Laser Fine scan_MeshPart3
-    4300008: WWI soldier Laser Fine scan_MeshPart4
-    4300010: WWI soldier Laser Fine scan_MeshPart5
-    4300012: WWI soldier Laser Fine scan_MeshPart6
-    4300014: WWI soldier Laser Fine scan_MeshPart7
-    4300016: group_0.001
-    4300018: group_0
+    400002: Lamp
+    400004: objBAYO
+    400006: //RootNode
+    2300000: objBAYO
+    3300000: objBAYO
+    4300000: objBAYO
   materials:
     importMaterials: 1
     materialName: 0

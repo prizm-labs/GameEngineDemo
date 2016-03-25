@@ -636,7 +636,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000061035156}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &63218162
@@ -3572,7 +3572,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000061035156}
+  m_AnchoredPosition: {x: 10, y: -0.000091552734}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &411305378
@@ -3687,8 +3687,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468612269}
   m_HandleRect: {fileID: 468612268}
   m_Direction: 0
-  m_Value: 0.0000010523303
-  m_Size: 0.8971631
+  m_Value: 0
+  m_Size: 0.89716333
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6626,7 +6626,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000061035156}
+  m_AnchoredPosition: {x: 10, y: -0.000091552734}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &791036667
@@ -8562,7 +8562,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000061035156}
+  m_AnchoredPosition: {x: -0.000030517578, y: -0.000091552734}
   m_SizeDelta: {x: 0.000030518, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1074683801
@@ -8777,7 +8777,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 58, y: -715.0001}
+  m_AnchoredPosition: {x: 58.000244, y: -691.7501}
   m_SizeDelta: {x: 116, y: 1430}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085573383
@@ -10431,7 +10431,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 638329245}
   m_HandleRect: {fileID: 638329244}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.9837414
   m_Size: 0.39187756
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11930,7 +11930,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000061035156}
+  m_AnchoredPosition: {x: 10, y: -0.000091552734}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1343447134
@@ -12930,7 +12930,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000061035156}
+  m_AnchoredPosition: {x: 10, y: 0.000030517578}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1488295558
@@ -13001,7 +13001,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: -0.000061035156}
+  m_AnchoredPosition: {x: 10, y: 0.000030517578}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1492878153
@@ -13805,7 +13805,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000038147, y: -244}
+  m_AnchoredPosition: {x: 0.00024414062, y: -209}
   m_SizeDelta: {x: 0, y: 488}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560677254
@@ -14371,7 +14371,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1213408079}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14424,9 +14424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7debdd6cf0c58417c8b76cf5f31b1c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entries:
-  - gameObject: {fileID: 499321712}
-    Id: 7cc47353-dff9-4069-9979-2381b569b6b5
+  entries: []
 --- !u!1 &1720775253
 GameObject:
   m_ObjectHideFlags: 0
@@ -14974,7 +14972,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1287498747}
   m_HandleRect: {fileID: 1287498746}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -15931,7 +15929,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 962479091}
   m_HandleRect: {fileID: 962479090}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 0.9282787
   m_Size: 0.65377796
   m_NumberOfSteps: 0
   m_OnValueChanged:

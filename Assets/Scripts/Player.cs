@@ -68,6 +68,15 @@ public class Player : MonoBehaviour {
 			myOwnedPieces.Add (newPiece);
 		}
 
+		newPiece.myColor = this.myColor;
+	
+		if (newPiece.myNewOwner != null && newPiece.myNewOwner != this) {
+			newPiece.myNewOwner.myOwnedPieces.Remove (newPiece);
+			newPiece.myNewOwner.UpdateMyDockCard ();
+		}
+
+		newPiece.myNewOwner = this;
+
 		if (mySoldiersPanel == null && newPiece.myType == TypeOfPiece.soldier){
 			CreateNewPanel (TypeOfPiece.soldier);
 		}
@@ -90,8 +99,7 @@ public class Player : MonoBehaviour {
 	}
 
 	private void SetPlayersColorVisually() {
-		Debug.Log ("setting particles starting color to: " + _myColor.ToString ());
-		transform.GetChild (0).gameObject.GetComponent<ParticleSystem> ().startColor = _myColor;
+		transform.GetChild (0).gameObject.GetComponent<ParticleSystemRenderer> ().material.color = _myColor;
 	}
 
 	private void CreateNewPanel(TypeOfPiece typeOfPanel) {

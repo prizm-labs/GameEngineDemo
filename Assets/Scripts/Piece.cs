@@ -20,7 +20,13 @@ public class Piece : MonoBehaviour {
 		}
 	}
 		
-
+	private Player _myNewOwner;
+	public Player myNewOwner {
+		get { return _myNewOwner; }
+		set{
+			_myNewOwner = value;
+		}
+	}
 	public static Color defaultNewPieceColor = Color.white;
 
 	private ObjectCreatorButtons _myCategory;
@@ -72,6 +78,8 @@ public class Piece : MonoBehaviour {
 
 			if (bootstrapped) {
 				SetMeshesColors (_myColor);
+			} else {
+				SetMeshesColorsDelay (_myColor);
 			}
 		}
 	}
@@ -165,7 +173,9 @@ public class Piece : MonoBehaviour {
 			ThisPieceIsADeckOfCards ();
 		} else if (myCategory == ObjectCreatorButtons.Player) {
 			ThisPieceIsAPlayer ();
-		} 
+		} else {
+			NewPieceCreator.RegisterObjectMaterials (this.gameObject);
+		}
 
 		bootstrapped = true;
 
@@ -296,8 +306,12 @@ public class Piece : MonoBehaviour {
 	}
 
 	private void ReloadMyMaterial() {
+		myMaterial = NewPieceCreator.RetrieveObjectMaterial (this.gameObject);
+
 		if (myMaterial == null)
 			return;
+		
+
 
 		Debug.Log ("SETTTING MATERIAL TO: " + myMaterial.name);
 		if (myCategory == ObjectCreatorButtons.Dice) {
@@ -342,11 +356,11 @@ public class Piece : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("triggered with: " + other.name);
-		if (other.tag == "Player") {
-			Debug.Log ("triggered with player, setting our color to their color");
-			Player myNewOwner = other.gameObject.GetComponent<Player> ();
-			myColor = myNewOwner.myColor;
-			myNewOwner.CollidedWithAPiece (this);
+		if (other.tag == "Player" && myCategory != ObjectCreatorButtons.Player) {
+			Debug.Log ("triggered with player");
+			Player theOtherPlayer = other.gameObject.GetComponent<Player> ();
+
+			theOtherPlayer.CollidedWithAPiece (this);
 		} else if (other.tag == "Drawer") {
 			transform.SetParent (other.transform, false);
 			myLocation = Location.inDrawer;
@@ -425,7 +439,7 @@ public class Piece : MonoBehaviour {
 		GetComponent<Rigidbody> ().useGravity = false;
 		GetComponent<Rigidbody> ().isKinematic = true;
 
-		GetComponent<BoxCollider> ().size = new Vector3 (30f, 100f, 20f);
+		GetComponent<BoxCollider> ().size = new Vector3 (30f, 10f, 20f);
 		GetComponent<BoxCollider> ().center = new Vector3 (-5f, 0f, 2.5f);
 		gameObject.AddComponent<Player> ();
 		GetComponent<Player> ().SetMyNameVisually (NewPieceCreator.numplayers++);
