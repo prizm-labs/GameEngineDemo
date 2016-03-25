@@ -5,6 +5,7 @@ using TouchScript.Gestures;
 using System.Linq;
 using System;
 
+[System.Serializable]
 public class Piece : MonoBehaviour {
 
 	private TypeOfPiece _myType;
@@ -95,7 +96,8 @@ public class Piece : MonoBehaviour {
 			Debug.Log ("an outside source tried f*cking with my material, going to reload it just incase");
 			if (bootstrapped) {
 				Debug.Log ("this thing was recovered from when saving, reloading its material");
-				ReloadMyMaterial ();
+				StartCoroutine (ReloadMyMaterialDelayed (Constants.timeDelayToLoad));
+				//ReloadMyMaterial ();
 			}
 		}
 	}
@@ -269,6 +271,30 @@ public class Piece : MonoBehaviour {
 		SetMeshesColors (theColor);
 	}
 
+	private IEnumerator ReloadMyMaterialDelayed(float delayTime) {
+		yield return new WaitForSeconds (delayTime);
+		if (myMaterial == null)
+			yield break;
+
+		Debug.Log ("SETTTING MATERIAL TO: " + myMaterial.name);
+		if (myCategory == ObjectCreatorButtons.Dice) {
+			Debug.Log ("not reloading dice material");
+			yield break;
+		}
+
+		if (childMeshobject.GetComponent<MeshRenderer> () != null) {
+			MeshRenderer tempMesh = childMeshobject.GetComponent<MeshRenderer> ();
+			tempMesh.sharedMaterial = myMaterial;
+		}
+
+		for (int i = 0; i < transform.GetChild (0).childCount; i++) {
+			if (transform.GetChild (0).GetChild (i).gameObject.GetComponent<MeshRenderer> () != null) {
+				MeshRenderer tempMesh = transform.GetChild (0).GetChild (i).gameObject.GetComponent<MeshRenderer> ();
+				tempMesh.sharedMaterial = myMaterial;
+			}
+		}
+	}
+
 	private void ReloadMyMaterial() {
 		if (myMaterial == null)
 			return;
@@ -291,6 +317,7 @@ public class Piece : MonoBehaviour {
 			}
 		}
 	}
+
 	void SetMeshesColors(Color newColor) {
 		//Debug.Log ("setting all the meshes colors to: " + newColor.ToString ());
 
@@ -354,6 +381,8 @@ public class Piece : MonoBehaviour {
 	public void ThisPieceIsADice() {
 		_myColor = Color.white;
 		GetComponent<TransformGesture> ().MinTouches = 2;
+
+		GetComponent<TransformGesture> ().Type = (TouchScript.Gestures.Base.TransformGestureBase.TransformType) 0x3;
 
 		gameObject.AddComponent<FlickGesture> ();
 		GetComponent<FlickGesture>().Flicked += DiceFlick;

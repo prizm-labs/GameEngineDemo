@@ -2,6 +2,7 @@
 using System.Collections;
 using TouchScript.Gestures;
 
+[System.Serializable]
 public class Card : MonoBehaviour {
 
 	private TapGesture myTapGesture;

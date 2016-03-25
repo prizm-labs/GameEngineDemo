@@ -4389,8 +4389,6 @@ GameObject:
   - 33: {fileID: 499321715}
   - 65: {fileID: 499321714}
   - 23: {fileID: 499321713}
-  - 114: {fileID: 499321717}
-  - 114: {fileID: 499321718}
   m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
@@ -4455,33 +4453,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &499321717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 499321712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd6fd92df3c974ed690d61989eb183ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDeserializing: 0
-  _id: 7cc47353-dff9-4069-9979-2381b569b6b5
-  classId: e79f7537-4794-4941-8438-94fc41154919
-  StoreAllComponents: 1
-  Components: []
---- !u!114 &499321718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 499321712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43eca1594e1c404d9ca96908baac6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &501607385
 GameObject:
   m_ObjectHideFlags: 0
