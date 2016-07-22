@@ -1,0 +1,57 @@
+Board Game Creation Engine Demo:
+
+Script:
+create background (select from list of .pngs)
+create & dock players (drag and drop from object creation menu)
+create cards
+	-object creation -> 2d objects -> create new
+	-opens asset loader menu (webpage of thingiverse)
+	-choose collection of pictures
+	-create deck of cards
+	-drag deck of cards onto board
+give cards to players
+	-drag top card onto player dock area
+	-player dock area shows flips card over
+create war pieces
+	-asset loader -> thingiverse -> view 3d model -> load into game
+	-object creation -> drag 3d piece onto screen -> drag to player dock
+	-object changes color into player's color
+	-player's panel updates to show object added
+create dice
+ 	-drag and drop red & black dice
+show objects snapping to grid & game is playable
+save game
+exit to main menu
+main menu -> view all games & their skins
+load a different skinned game
+demonstrate playability
+load 'classic' version just created
+demonstrate re-playability
+
+~fin~
+
+
+
+
+Features:
+object creation menu
+object holder tray (hide dice when not in use, deck of cards when not needed)
+asset loader menu (webpage)
+main menu with loading saved games
+dice roll when flicked
+cards turn over when double tapped
+save game
+main menu (load game, create game)
+snap objects to a grid
+sounds????
+
+
+
+
+Pre-loaded:
+other expansions/skins of risk
+red d6 & black d6
+risk background .png
+object snap points
+all risk 3d objects except 1
+playing card (pictures on object creation)
